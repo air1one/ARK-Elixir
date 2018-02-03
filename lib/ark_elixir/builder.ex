@@ -30,7 +30,7 @@ defmodule ArkElixir.Builder do
     }
 
     parameters = Keyword.put(parameters, :network, nethashes["#{client.nethash}"])
-    parameters = Keyword.put(parameters, :arkjs, nethashes["#{client.arkjs}"])
+    parameters = Keyword.put(parameters, :arkjs, "#{client.arkjs}")
 
     script = EEx.eval_file("templates/#{template}.eex", parameters)
 
