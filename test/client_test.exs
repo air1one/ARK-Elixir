@@ -4,6 +4,7 @@ defmodule ArkElixir.ClientTest do
   test "create ArkElixir.Client" do
     client =
       ArkElixir.Client.new(%{
+        protocol: 'https',
         ip: '127.0.0.1',
         port: 4002,
         nethash: '578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23',
@@ -11,6 +12,7 @@ defmodule ArkElixir.ClientTest do
         arkjs: '/usr/local/lib/node_modules/arkjs'
       })
 
+    assert client.protocol == 'https'
     assert client.ip == '127.0.0.1'
     assert client.port == 4002
     assert client.nethash == '578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23'

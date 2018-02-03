@@ -26,7 +26,7 @@ defmodule ArkElixir do
   end
 
   defp build_url(client, path) do
-    "https://#{client.ip}:#{client.port}/#{path}"
+    "#{client.protocol}://#{client.ip}:#{client.port}/#{path}"
   end
 
   defp build_headers(client) do
