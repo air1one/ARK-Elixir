@@ -1,0 +1,19 @@
+var ark = require("<%= arkjs %>");
+
+ark.crypto.setNetworkVersion(<%= network %>);
+
+var transaction = ark.transaction.createTransaction(
+    "<%= recipientId %>",
+    <%= amount %>,
+    <%= if vendorField do %>
+        "<%= vendorField %>",
+    <% else %>
+        null,
+    <% end %>
+    "<%= secret %>"
+    <%= if secondSecret do %>
+        ,"<%= secondSecret %>"
+    <% end %>
+);
+
+console.log(JSON.stringify(transaction));

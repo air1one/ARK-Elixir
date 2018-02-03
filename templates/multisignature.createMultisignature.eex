@@ -1,0 +1,15 @@
+var ark = require("<%= arkjs %>");
+
+ark.crypto.setNetworkVersion(<%= network %>);
+
+var transaction = ark.multisignature.createMultisignature(
+    "<%= secret %>",
+    <%= if secondSecret do %>
+        "<%= secondSecret %>",
+    <% end %>
+    "<%= keysgroup %>",
+    "<%= lifetime %>",
+    "<%= min %>",
+);
+
+console.log(JSON.stringify(transaction));
