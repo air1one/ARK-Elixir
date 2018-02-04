@@ -25,7 +25,7 @@ defmodule ArkElixir.Client do
   @spec new(t) :: t
   def new(server) do
     %__MODULE__{
-      protocol: sever.protocol,
+      protocol: server.protocol,
       ip: server.ip,
       port: server.port,
       nethash: server.nethash,

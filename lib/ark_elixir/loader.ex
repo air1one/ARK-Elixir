@@ -14,7 +14,7 @@ defmodule ArkElixir.Loader do
       :world
 
   """
-  @spec status(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec status(ArkElixir.Client) :: ArkElixir.response()
   def status(client) do
     get(client, 'api/loader/status')
   end
@@ -28,7 +28,7 @@ defmodule ArkElixir.Loader do
       :world
 
   """
-  @spec sync(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec sync(ArkElixir.Client) :: ArkElixir.response()
   def sync(client) do
     get(client, 'api/loader/status/sync')
   end
@@ -42,7 +42,7 @@ defmodule ArkElixir.Loader do
       :world
 
   """
-  @spec autoconfigure(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec autoconfigure(ArkElixir.Client) :: ArkElixir.response()
   def autoconfigure(client) do
     get(client, 'api/loader/autoconfigure')
   end

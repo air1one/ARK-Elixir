@@ -14,7 +14,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec balance(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec balance(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def balance(client, address) do
     get(client, 'api/accounts/getBalance', %{address: address})
   end
@@ -28,7 +28,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec publickey(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec publickey(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def publickey(client, address) do
     get(client, 'api/accounts/getPublickey', %{address: address})
   end
@@ -42,7 +42,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec delegates(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec delegates(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def delegates(client, address) do
     get(client, 'api/accounts/delegates', %{address: address})
   end
@@ -56,7 +56,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec fee(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec fee(ArkElixir.Client) :: ArkElixir.response()
   def fee(client) do
     get(client, 'api/accounts/delegates/fee')
   end
@@ -70,7 +70,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec account(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec account(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def account(client, address) do
     get(client, 'api/accounts', %{address: address})
   end
@@ -84,7 +84,7 @@ defmodule ArkElixir.Account do
       :world
 
   """
-  @spec top(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec top(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def top(client, parameters \\ []) do
     get(client, 'api/accounts/top', parameters)
   end

@@ -4,15 +4,15 @@ defmodule ArkElixir.PeerTest do
 
   @client ArkElixir.Client.new(%{
             protocol: "https",
-            ip: "127.0.0.1",
-            port: 4002,
+            ip: "dexplorer.ark.io",
+            port: 8443,
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
             version: "1.1.1",
             arkjs: "/usr/local/lib/node_modules/arkjs"
           })
 
   test "call peer" do
-    response = peer(@client, "167.114.29.33", 4002)
+    response = peer(@client, "167.114.29.33", 8443)
 
     assert(response["success"] === true)
   end

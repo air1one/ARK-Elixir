@@ -14,7 +14,7 @@ defmodule ArkElixir.MultiSignature do
       :world
 
   """
-  @spec pending(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec pending(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def pending(client, publicKey) do
     get(client, 'api/multisignatures/pending', %{publicKey: publicKey})
   end
@@ -28,7 +28,7 @@ defmodule ArkElixir.MultiSignature do
       :world
 
   """
-  @spec sign(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec sign(ArkElixir.Client, String.t(), String.t(), Keyword.t()) :: ArkElixir.response()
   def sign(client, transactionId, secret, parameters \\ []) do
     post(client, 'api/multisignatures/sign', %{transactionId: transactionId, secret: secret})
   end
@@ -42,7 +42,8 @@ defmodule ArkElixir.MultiSignature do
       :world
 
   """
-  @spec create(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec create(ArkElixir.Client, String.t(), String.t(), String.t(), Integer.t(), Integer.t()) ::
+          ArkElixir.response()
   def create(client, secret, secondSecret, keysgroup, lifetime, min) do
     parameters =
       ArkElixir.Builder.multisignature(

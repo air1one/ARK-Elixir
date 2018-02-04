@@ -4,8 +4,8 @@ defmodule ArkElixir.TransactionTest do
 
   @client ArkElixir.Client.new(%{
             protocol: "https",
-            ip: "127.0.0.1",
-            port: 4002,
+            ip: "dexplorer.ark.io",
+            port: 8443,
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
             version: "1.1.1",
             arkjs: "/usr/local/lib/node_modules/arkjs"
@@ -24,6 +24,7 @@ defmodule ArkElixir.TransactionTest do
     assert(response["success"] === true)
   end
 
+  @tag :skip
   test "call ArkElixir.Transaction.unconfirmed_transaction" do
     response =
       unconfirmed_transaction(
@@ -40,6 +41,7 @@ defmodule ArkElixir.TransactionTest do
     assert(response["success"] === true)
   end
 
+  @tag :skip
   test "call ArkElixir.Transaction.create" do
     response =
       create(

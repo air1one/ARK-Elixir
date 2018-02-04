@@ -14,7 +14,7 @@ defmodule ArkElixir.Signature do
       :world
 
   """
-  @spec fee(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec fee(ArkElixir.Client) :: ArkElixir.response()
   def fee(client) do
     get(client, 'api/signatures/fee')
   end
@@ -28,7 +28,7 @@ defmodule ArkElixir.Signature do
       :world
 
   """
-  @spec create(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec create(ArkElixir.Client, String.t(), String.t()) :: ArkElixir.response()
   def create(client, secret, secondSecret) do
     parameters =
       ArkElixir.Builder.signature(

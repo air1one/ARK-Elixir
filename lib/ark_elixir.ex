@@ -6,9 +6,6 @@ defmodule ArkElixir do
   use HTTPoison.Base
   alias ArkElixir.Client
 
-  @type http :: ArkElixir.Client
-  @type parameters :: Keyword.t()
-  @type path :: String.t()
   @type response :: %{String.t() => any}
 
   @doc """
@@ -20,7 +17,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec get(path, parameters) :: response
+  @spec get(ArkElixir.Client, String.t(), Keyword.t()) :: response
   def get(client, path, parameters) do
     response =
       HTTPoison.get!(
@@ -40,7 +37,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec post(path, parameters) :: response
+  @spec post(ArkElixir.Client, String.t(), Keyword.t()) :: response
   def post(client, path, parameters) do
     payload = Poison.encode!(parameters)
 
@@ -63,7 +60,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec put(path, parameters) :: response
+  @spec put(ArkElixir.Client, String.t(), Keyword.t()) :: response
   def put(client, path, parameters) do
     payload = Poison.encode!(parameters)
 
@@ -86,7 +83,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec build_url(path, parameters) :: response
+  @spec build_url(ArkElixir.Client, String.t()) :: response
   defp build_url(client, path) do
     "#{client.protocol}://#{client.ip}:#{client.port}/#{path}"
   end
@@ -100,7 +97,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec build_headers(path, parameters) :: response
+  @spec build_headers(ArkElixir.Client) :: response
   defp build_headers(client) do
     [
       "Content-Type": "application/json",
@@ -119,7 +116,7 @@ defmodule ArkElixir do
       :world
 
   """
-  @spec build_query(path, parameters) :: response
+  @spec build_query(Keyword.t()) :: response
   defp build_query(parameters) do
     queryString =
       parameters

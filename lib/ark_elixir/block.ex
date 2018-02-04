@@ -14,7 +14,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec block(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec block(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def block(client, id) do
     get(client, 'api/blocks/get', %{id: id})
   end
@@ -28,7 +28,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec blocks(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec blocks(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def blocks(client, parameters \\ []) do
     get(client, 'api/blocks', parameters)
   end
@@ -42,7 +42,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec epoch(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec epoch(ArkElixir.Client) :: ArkElixir.response()
   def epoch(client) do
     get(client, 'api/blocks/getEpoch')
   end
@@ -56,7 +56,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec height(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec height(ArkElixir.Client) :: ArkElixir.response()
   def height(client) do
     get(client, 'api/blocks/getHeight')
   end
@@ -70,7 +70,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec nethash(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec nethash(ArkElixir.Client) :: ArkElixir.response()
   def nethash(client) do
     get(client, 'api/blocks/getNethash')
   end
@@ -84,7 +84,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec fee(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec fee(ArkElixir.Client) :: ArkElixir.response()
   def fee(client) do
     get(client, 'api/blocks/getFee')
   end
@@ -98,7 +98,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec fees(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec fees(ArkElixir.Client) :: ArkElixir.response()
   def fees(client) do
     get(client, 'api/blocks/getFees')
   end
@@ -112,7 +112,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec milestone(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec milestone(ArkElixir.Client) :: ArkElixir.response()
   def milestone(client) do
     get(client, 'api/blocks/getMilestone')
   end
@@ -126,7 +126,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec reward(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec reward(ArkElixir.Client) :: ArkElixir.response()
   def reward(client) do
     get(client, 'api/blocks/getReward')
   end
@@ -140,7 +140,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec supply(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec supply(ArkElixir.Client) :: ArkElixir.response()
   def supply(client) do
     get(client, 'api/blocks/getSupply')
   end
@@ -154,7 +154,7 @@ defmodule ArkElixir.Block do
       :world
 
   """
-  @spec status(ArkElixir.http(), ArkElixir.parameters()) :: ArkElixir.response()
+  @spec status(ArkElixir.Client) :: ArkElixir.response()
   def status(client) do
     get(client, 'api/blocks/getStatus')
   end
