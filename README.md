@@ -39,9 +39,7 @@ IO.puts response["transactionIds"]
 
 # To-Do
 
-- Add Types
-- Add Specs
-- Add Docs
+- Add Responses to Docs
 
 ## Testing
 

@@ -6,7 +6,7 @@ defmodule ArkElixir.Loader do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get the blockchain status.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Loader do
   end
 
   @doc """
-  Hello world.
+  Get the synchronisation status of the client.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Loader do
   end
 
   @doc """
-  Hello world.
+  Auto-configure the client loader.
 
   ## Examples
 

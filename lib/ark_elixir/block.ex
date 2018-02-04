@@ -6,7 +6,7 @@ defmodule ArkElixir.Block do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get block by id.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get all blocks.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain epoch.
 
   ## Examples
 
@@ -48,7 +48,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain height.
 
   ## Examples
 
@@ -62,7 +62,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain nethash.
 
   ## Examples
 
@@ -76,7 +76,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the transaction fee for sending "normal" transactions.
 
   ## Examples
 
@@ -90,7 +90,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the network fees.
 
   ## Examples
 
@@ -104,7 +104,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain milestone.
 
   ## Examples
 
@@ -118,7 +118,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain reward.
 
   ## Examples
 
@@ -132,7 +132,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain supply.
 
   ## Examples
 
@@ -146,7 +146,7 @@ defmodule ArkElixir.Block do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain status.
 
   ## Examples
 

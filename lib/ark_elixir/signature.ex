@@ -6,7 +6,7 @@ defmodule ArkElixir.Signature do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get the fee for a signature.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Signature do
   end
 
   @doc """
-  Hello world.
+  Create a new signature.
 
   ## Examples
 

@@ -6,7 +6,7 @@ defmodule ArkElixir.Peer do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get a single peer.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Peer do
   end
 
   @doc """
-  Hello world.
+  Get all peers.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Peer do
   end
 
   @doc """
-  Hello world.
+  Get the peer version.
 
   ## Examples
 

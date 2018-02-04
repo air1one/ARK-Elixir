@@ -6,7 +6,7 @@ defmodule ArkElixir.Transport do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get a list of peers.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get a list of blocks by ids.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get a single block.
 
   ## Examples
 
@@ -48,7 +48,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get all blocks.
 
   ## Examples
 
@@ -62,7 +62,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get a list of transactions.
 
   ## Examples
 
@@ -76,7 +76,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get a list of transactions by ids.
 
   ## Examples
 
@@ -90,7 +90,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Create a new transaction.
 
   ## Examples
 
@@ -104,7 +104,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain height.
 
   ## Examples
 
@@ -118,7 +118,7 @@ defmodule ArkElixir.Transport do
   end
 
   @doc """
-  Hello world.
+  Get the blockchain status.
 
   ## Examples
 

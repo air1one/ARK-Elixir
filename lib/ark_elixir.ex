@@ -9,7 +9,7 @@ defmodule ArkElixir do
   @type response :: %{String.t() => any}
 
   @doc """
-  Hello world.
+  Sends an HTTP GET request to a node.
 
   ## Examples
 
@@ -29,7 +29,7 @@ defmodule ArkElixir do
   end
 
   @doc """
-  Hello world.
+  Sends an HTTP POST request to a node.
 
   ## Examples
 
@@ -52,7 +52,7 @@ defmodule ArkElixir do
   end
 
   @doc """
-  Hello world.
+  Sends an HTTP PUT request to a node.
 
   ## Examples
 
@@ -75,7 +75,7 @@ defmodule ArkElixir do
   end
 
   @doc """
-  Hello world.
+  Build an URL based on the ArkElixir.Client.
 
   ## Examples
 
@@ -89,7 +89,7 @@ defmodule ArkElixir do
   end
 
   @doc """
-  Hello world.
+  Build request headers based on the ArkElixir.Client.
 
   ## Examples
 
@@ -108,7 +108,7 @@ defmodule ArkElixir do
   end
 
   @doc """
-  Hello world.
+  Builder an URL query based on the ArkElixir.Client.
 
   ## Examples
 

@@ -6,7 +6,7 @@ defmodule ArkElixir.Transaction do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get a single transaction.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Transaction do
   end
 
   @doc """
-  Hello world.
+  Get all transactions.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Transaction do
   end
 
   @doc """
-  Hello world.
+  Get a single unconfirmed transaction.
 
   ## Examples
 
@@ -48,7 +48,7 @@ defmodule ArkElixir.Transaction do
   end
 
   @doc """
-  Hello world.
+  Get all unconfirmed transactions.
 
   ## Examples
 
@@ -62,7 +62,7 @@ defmodule ArkElixir.Transaction do
   end
 
   @doc """
-  Hello world.
+  Sign and create a new transaction.
 
   ## Examples
 
@@ -87,7 +87,7 @@ defmodule ArkElixir.Transaction do
   end
 
   @doc """
-  Hello world.
+  Create a new transaction.
 
   ## Examples
 

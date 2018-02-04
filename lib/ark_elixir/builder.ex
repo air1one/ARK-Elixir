@@ -4,7 +4,7 @@ defmodule ArkElixir.Builder do
   """
 
   @doc """
-  Hello world.
+  Create a new signed delegate transaction.
 
   ## Examples
 
@@ -18,7 +18,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed multisignature transaction.
 
   ## Examples
 
@@ -32,7 +32,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed signature transaction.
 
   ## Examples
 
@@ -46,7 +46,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed transaction (send ARK).
 
   ## Examples
 
@@ -60,7 +60,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed vote transaction.
 
   ## Examples
 
@@ -74,7 +74,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed unvote transaction.
 
   ## Examples
 
@@ -88,7 +88,7 @@ defmodule ArkElixir.Builder do
   end
 
   @doc """
-  Hello world.
+  Create a new signed transaction.
 
   ## Examples
 

@@ -14,11 +14,11 @@ defmodule ArkElixir.Client do
         }
 
   @doc """
-  Hello world.
+  Create a new instance.
 
   ## Examples
 
-      iex> ArkElixir.Client.block
+      iex> ArkElixir.Client.new
       :world
 
   """

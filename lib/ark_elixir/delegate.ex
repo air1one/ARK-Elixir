@@ -6,7 +6,7 @@ defmodule ArkElixir.Delegate do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get the count of delegates
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Search for specific delegates
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get a list of voters for a delegate
 
   ## Examples
 
@@ -48,7 +48,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get a single delegate
 
   ## Examples
 
@@ -62,7 +62,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get all delegates
 
   ## Examples
 
@@ -76,7 +76,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Create a new delegate
 
   ## Examples
 
@@ -90,7 +90,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get the delegate fee
 
   ## Examples
 
@@ -106,7 +106,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get the amount of ARKs forged by an account
 
   ## Examples
 
@@ -128,7 +128,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Get the next forger
 
   ## Examples
 
@@ -142,7 +142,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Enable forging for a delegate
 
   ## Examples
 
@@ -156,7 +156,7 @@ defmodule ArkElixir.Delegate do
   end
 
   @doc """
-  Hello world.
+  Disable forging for a delegate
 
   ## Examples
 

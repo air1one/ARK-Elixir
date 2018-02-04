@@ -6,7 +6,7 @@ defmodule ArkElixir.MultiSignature do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get pending multi signature transactions.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.MultiSignature do
   end
 
   @doc """
-  Hello world.
+  Sign a new multi signature.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.MultiSignature do
   end
 
   @doc """
-  Hello world.
+  Create a new multi signature.
 
   ## Examples
 
@@ -57,4 +57,19 @@ defmodule ArkElixir.MultiSignature do
 
     post(client, 'peer/transactions', %{secret: secret})
   end
+
+  @doc """
+  Get a list of accounts.
+
+  ## Examples
+
+      iex> ArkElixir.MultiSignature.accounts
+      :world
+
+  """
+  @spec accounts(ArkElixir.Client, String.t()) :: ArkElixir.response()
+  def accounts(client, publicKey) do
+    get(client, 'api/multisignatures/accounts', %{publicKey: publicKey})
+  end
+
 end

@@ -6,7 +6,7 @@ defmodule ArkElixir.Account do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Get the balance of an account.
 
   ## Examples
 
@@ -20,7 +20,7 @@ defmodule ArkElixir.Account do
   end
 
   @doc """
-  Hello world.
+  Get the public key of an account.
 
   ## Examples
 
@@ -34,7 +34,7 @@ defmodule ArkElixir.Account do
   end
 
   @doc """
-  Hello world.
+  Get the delegates of an account.
 
   ## Examples
 
@@ -48,7 +48,7 @@ defmodule ArkElixir.Account do
   end
 
   @doc """
-  Hello world.
+  Get the delegate fee of an account.
 
   ## Examples
 
@@ -62,7 +62,7 @@ defmodule ArkElixir.Account do
   end
 
   @doc """
-  Hello world.
+  Get an account.
 
   ## Examples
 
@@ -76,7 +76,7 @@ defmodule ArkElixir.Account do
   end
 
   @doc """
-  Hello world.
+  Get a list of top accounts.
 
   ## Examples
 

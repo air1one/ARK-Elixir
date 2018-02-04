@@ -6,7 +6,7 @@ defmodule ArkElixir.Vote do
   import ArkElixir
 
   @doc """
-  Hello world.
+  Sign and create a new vote.
 
   ## Examples
 
@@ -28,7 +28,7 @@ defmodule ArkElixir.Vote do
   end
 
   @doc """
-  Hello world.
+  Sign and create a new unvote.
 
   ## Examples
 
