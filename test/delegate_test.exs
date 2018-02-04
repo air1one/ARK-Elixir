@@ -62,28 +62,12 @@ defmodule ArkElixir.DelegateTest do
     assert(response["success"] === true)
   end
 
-  # test "call ArkElixir.Delegate.create" do
-  #   response = create(@client, "secret", "username", "secondSecret")
-
-  #   assert(response["success"] === true)
-  # end
   test "call ArkElixir.Delegate.next_forgers" do
     response = next_forgers(@client)
 
     assert(response["success"] === true)
   end
 
-  # test "call ArkElixir.Delegate.enable_forging" do
-  #   response = enable_forging(@client, "secret")
-
-  #   assert(response["success"] === true)
-  # end
-
-  # test "call ArkElixir.Delegate.disable_forging" do
-  #   response = disable_forging(@client, "secret")
-
-  #   assert(response["success"] === true)
-  # end
   test "call ArkElixir.Delegate.forging_status" do
     response =
       forging_status(

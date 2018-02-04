@@ -11,19 +11,19 @@ defmodule ArkElixir.LoaderTest do
             arkjs: "/usr/local/lib/node_modules/arkjs"
           })
 
-  test "call status" do
+  test "call ArkElixir.Loader.status" do
     response = status(@client)
 
     assert(response["success"] === true)
   end
 
-  test "call sync" do
+  test "call ArkElixir.Loader.sync" do
     response = sync(@client)
 
     assert(response["success"] === true)
   end
 
-  test "call autoconfigure" do
+  test "call ArkElixir.Loader.autoconfigure" do
     response = autoconfigure(@client)
 
     assert(response["success"] === true)

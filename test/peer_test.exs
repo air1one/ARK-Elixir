@@ -11,19 +11,19 @@ defmodule ArkElixir.PeerTest do
             arkjs: "/usr/local/lib/node_modules/arkjs"
           })
 
-  test "call peer" do
+  test "call ArkElixir.Peer.peer" do
     response = peer(@client, "167.114.29.33", 8443)
 
     assert(response["success"] === true)
   end
 
-  test "call peers" do
+  test "call ArkElixir.Peer.peers" do
     response = peers(@client)
 
     assert(response["success"] === true)
   end
 
-  test "call version" do
+  test "call ArkElixir.Peer.version" do
     response = version(@client)
 
     assert(response["success"] === true)
