@@ -14,6 +14,7 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec transaction(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def transaction(client, id) do
     get(client, 'api/transactions/get', %{id: id})
   end
@@ -27,6 +28,7 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec transactions(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def transactions(client, parameters \\ []) do
     get(client, 'api/transactions', parameters)
   end
@@ -40,6 +42,7 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec unconfirmed_transaction(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def unconfirmed_transaction(client, id) do
     get(client, 'api/transactions/unconfirmed/get', %{id: id})
   end
@@ -53,6 +56,7 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec unconfirmed_transactions(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def unconfirmed_transactions(client, parameters \\ []) do
     get(client, 'api/transactions/unconfirmed', parameters)
   end
@@ -66,6 +70,8 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec create(ArkElixir.Client, String.t(), String.t(), String.t(), String.t(), String.t()) ::
+          ArkElixir.response()
   def create(client, recipientId, amount, vendorField, secret, secondSecret \\ nil) do
     transaction =
       ArkElixir.Builder.transaction(
@@ -89,6 +95,7 @@ defmodule ArkElixir.Transaction do
       :world
 
   """
+  @spec create_from_signed_object(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def create_from_signed_object(client, transaction) do
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end

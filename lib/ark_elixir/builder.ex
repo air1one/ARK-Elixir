@@ -12,6 +12,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec delegate(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def delegate(client, parameters) do
     build(client, "delegate.createDelegate", parameters)
   end
@@ -25,6 +26,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec multisignature(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def multisignature(client, parameters) do
     build(client, "multisignature.createMultisignature", parameters)
   end
@@ -38,6 +40,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec signature(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def signature(client, parameters) do
     build(client, "signature.createSignature", parameters)
   end
@@ -51,6 +54,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec transaction(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def transaction(client, parameters) do
     build(client, "transaction.createTransaction", parameters)
   end
@@ -64,6 +68,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec vote(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def vote(client, parameters) do
     build(client, "vote.createVote", parameters)
   end
@@ -77,6 +82,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec unvote(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def unvote(client, parameters) do
     build(client, "vote.deleteVote", parameters)
   end
@@ -90,6 +96,7 @@ defmodule ArkElixir.Builder do
       :world
 
   """
+  @spec unvote(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   defp build(client, template, parameters) do
     nethashes = %{
       "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988" => 0x17,

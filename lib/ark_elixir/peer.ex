@@ -14,6 +14,7 @@ defmodule ArkElixir.Peer do
       :world
 
   """
+  @spec peer(ArkElixir.Client, String.t(), Integer.t()) :: ArkElixir.response()
   def peer(client, ip, port) do
     get(client, 'api/peers/get', %{ip: ip, port: port})
   end
@@ -27,8 +28,9 @@ defmodule ArkElixir.Peer do
       :world
 
   """
-  def peers(client, params \\ []) do
-    get(client, 'api/peers', params)
+  @spec peers(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
+  def peers(client, parameters \\ []) do
+    get(client, 'api/peers', parameters)
   end
 
   @doc """
@@ -40,6 +42,7 @@ defmodule ArkElixir.Peer do
       :world
 
   """
+  @spec version(ArkElixir.Client) :: ArkElixir.response()
   def version(client) do
     get(client, 'api/peers/version')
   end

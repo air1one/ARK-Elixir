@@ -14,6 +14,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec list(ArkElixir.Client) :: ArkElixir.response()
   def list(client) do
     get(client, 'peer/list')
   end
@@ -27,8 +28,9 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec blocks_common(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def blocks_common(client, ids) do
-    get(client, 'peer/blocks/common', %{ids: ids})
+    get(client, 'peer/blocks/common', %{ids: Poison.encode!(Enum.join(ids, ","))})
   end
 
   @doc """
@@ -40,6 +42,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec block(ArkElixir.Client, String.t()) :: ArkElixir.response()
   def block(client, id) do
     get(client, 'peer/block', %{id: id})
   end
@@ -53,21 +56,9 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec blocks(ArkElixir.Client) :: ArkElixir.response()
   def blocks(client) do
     get(client, 'peer/blocks')
-  end
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> ArkElixir.Transport.create_block
-      :world
-
-  """
-  def create_block(client, block) do
-    post(client, 'peer/blocks', %{block: block})
   end
 
   @doc """
@@ -79,6 +70,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec transactions(ArkElixir.Client) :: ArkElixir.response()
   def transactions(client) do
     get(client, 'peer/transactions')
   end
@@ -92,8 +84,9 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec transactions_from_ids(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def transactions_from_ids(client, ids) do
-    get(client, 'peer/transactionsFromIds', %{ids: ids})
+    get(client, 'peer/transactionsFromIds', %{ids: Enum.join(ids, ",")})
   end
 
   @doc """
@@ -105,6 +98,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec create_transactions(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def create_transactions(client, transactions) do
     post(client, 'peer/transactions', %{transactions: [transactions]})
   end
@@ -118,6 +112,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec height(ArkElixir.Client) :: ArkElixir.response()
   def height(client) do
     get(client, 'peer/height')
   end
@@ -131,6 +126,7 @@ defmodule ArkElixir.Transport do
       :world
 
   """
+  @spec status(ArkElixir.Client) :: ArkElixir.response()
   def status(client) do
     get(client, 'peer/status')
   end

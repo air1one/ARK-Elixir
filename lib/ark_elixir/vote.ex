@@ -14,6 +14,7 @@ defmodule ArkElixir.Vote do
       :world
 
   """
+  @spec vote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
   def vote(client, secret, delegate, secondSecret \\ nil) do
     transaction =
       ArkElixir.Builder.unvote(
@@ -35,6 +36,7 @@ defmodule ArkElixir.Vote do
       :world
 
   """
+  @spec unvote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
   def unvote(client, secret, delegate, secondSecret \\ nil) do
     transaction =
       ArkElixir.Builder.unvote(
