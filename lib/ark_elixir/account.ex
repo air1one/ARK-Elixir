@@ -10,7 +10,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.balance
+      iex> ArkElixir.Account.balance(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.publickey
+      iex> ArkElixir.Account.publickey(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.delegates
+      iex> ArkElixir.Account.delegates(client)
       :world
 
   """
@@ -52,7 +52,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.fee
+      iex> ArkElixir.Account.fee(client)
       :world
 
   """
@@ -66,7 +66,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.account
+      iex> ArkElixir.Account.account(client)
       :world
 
   """
@@ -80,7 +80,7 @@ defmodule ArkElixir.Account do
 
   ## Examples
 
-      iex> ArkElixir.Account.top
+      iex> ArkElixir.Account.top(client)
       :world
 
   """

@@ -10,7 +10,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.transaction
+      iex> ArkElixir.Transaction.transaction(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.transactions
+      iex> ArkElixir.Transaction.transactions(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.unconfirmed_transaction
+      iex> ArkElixir.Transaction.unconfirmed_transaction(client)
       :world
 
   """
@@ -52,7 +52,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.unconfirmed_transactions
+      iex> ArkElixir.Transaction.unconfirmed_transactions(client)
       :world
 
   """
@@ -66,7 +66,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.create
+      iex> ArkElixir.Transaction.create(client)
       :world
 
   """
@@ -91,7 +91,7 @@ defmodule ArkElixir.Transaction do
 
   ## Examples
 
-      iex> ArkElixir.Transaction.create_from_signed_object
+      iex> ArkElixir.Transaction.create_from_signed_object(client)
       :world
 
   """

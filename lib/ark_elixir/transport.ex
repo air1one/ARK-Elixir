@@ -10,7 +10,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.list
+      iex> ArkElixir.Transport.list(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.blocks_common
+      iex> ArkElixir.Transport.blocks_common(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.block
+      iex> ArkElixir.Transport.block(client)
       :world
 
   """
@@ -52,7 +52,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.blocks
+      iex> ArkElixir.Transport.blocks(client)
       :world
 
   """
@@ -66,7 +66,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.transactions
+      iex> ArkElixir.Transport.transactions(client)
       :world
 
   """
@@ -80,7 +80,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.transactions_from_ids
+      iex> ArkElixir.Transport.transactions_from_ids(client)
       :world
 
   """
@@ -94,7 +94,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.create_transactions
+      iex> ArkElixir.Transport.create_transactions(client)
       :world
 
   """
@@ -108,7 +108,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.height
+      iex> ArkElixir.Transport.height(client)
       :world
 
   """
@@ -122,7 +122,7 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.status
+      iex> ArkElixir.Transport.status(client)
       :world
 
   """

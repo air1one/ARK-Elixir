@@ -10,7 +10,7 @@ defmodule ArkElixir.Loader do
 
   ## Examples
 
-      iex> ArkElixir.Loader.status
+      iex> ArkElixir.Loader.status(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Loader do
 
   ## Examples
 
-      iex> ArkElixir.Loader.sync
+      iex> ArkElixir.Loader.sync(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Loader do
 
   ## Examples
 
-      iex> ArkElixir.Loader.autoconfigure
+      iex> ArkElixir.Loader.autoconfigure(client)
       :world
 
   """

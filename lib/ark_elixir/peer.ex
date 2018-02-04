@@ -10,7 +10,7 @@ defmodule ArkElixir.Peer do
 
   ## Examples
 
-      iex> ArkElixir.Peer.peer
+      iex> ArkElixir.Peer.peer(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Peer do
 
   ## Examples
 
-      iex> ArkElixir.Peer.peers
+      iex> ArkElixir.Peer.peers(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Peer do
 
   ## Examples
 
-      iex> ArkElixir.Peer.version
+      iex> ArkElixir.Peer.version(client)
       :world
 
   """

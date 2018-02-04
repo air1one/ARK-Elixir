@@ -13,7 +13,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.get
+      iex> ArkElixir.get(client)
       :world
 
   """
@@ -33,7 +33,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.post
+      iex> ArkElixir.post(client)
       :world
 
   """
@@ -56,7 +56,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.put
+      iex> ArkElixir.put(client)
       :world
 
   """
@@ -79,7 +79,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.build_url
+      iex> ArkElixir.build_url(client)
       :world
 
   """
@@ -93,7 +93,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.build_headers
+      iex> ArkElixir.build_headers(client)
       :world
 
   """
@@ -112,7 +112,7 @@ defmodule ArkElixir do
 
   ## Examples
 
-      iex> ArkElixir.build_query
+      iex> ArkElixir.build_query(client)
       :world
 
   """

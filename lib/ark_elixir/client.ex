@@ -18,7 +18,7 @@ defmodule ArkElixir.Client do
 
   ## Examples
 
-      iex> ArkElixir.Client.new
+      iex> ArkElixir.Client.new(client)
       :world
 
   """

@@ -10,7 +10,7 @@ defmodule ArkElixir.Signature do
 
   ## Examples
 
-      iex> ArkElixir.Signature.fee
+      iex> ArkElixir.Signature.fee(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Signature do
 
   ## Examples
 
-      iex> ArkElixir.Signature.create
+      iex> ArkElixir.Signature.create(client)
       :world
 
   """

@@ -10,7 +10,7 @@ defmodule ArkElixir.MultiSignature do
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.pending
+      iex> ArkElixir.MultiSignature.pending(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.MultiSignature do
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.sign
+      iex> ArkElixir.MultiSignature.sign(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.MultiSignature do
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.create
+      iex> ArkElixir.MultiSignature.create(client)
       :world
 
   """
@@ -63,7 +63,7 @@ defmodule ArkElixir.MultiSignature do
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.accounts
+      iex> ArkElixir.MultiSignature.accounts(client)
       :world
 
   """

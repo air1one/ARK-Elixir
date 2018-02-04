@@ -10,7 +10,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.block
+      iex> ArkElixir.Block.block(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.blocks
+      iex> ArkElixir.Block.blocks(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.epoch
+      iex> ArkElixir.Block.epoch(client)
       :world
 
   """
@@ -52,7 +52,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.height
+      iex> ArkElixir.Block.height(client)
       :world
 
   """
@@ -66,7 +66,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.nethash
+      iex> ArkElixir.Block.nethash(client)
       :world
 
   """
@@ -80,7 +80,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.fee
+      iex> ArkElixir.Block.fee(client)
       :world
 
   """
@@ -94,7 +94,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.fees
+      iex> ArkElixir.Block.fees(client)
       :world
 
   """
@@ -108,7 +108,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.milestone
+      iex> ArkElixir.Block.milestone(client)
       :world
 
   """
@@ -122,7 +122,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.reward
+      iex> ArkElixir.Block.reward(client)
       :world
 
   """
@@ -136,7 +136,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.supply
+      iex> ArkElixir.Block.supply(client)
       :world
 
   """
@@ -150,7 +150,7 @@ defmodule ArkElixir.Block do
 
   ## Examples
 
-      iex> ArkElixir.Block.status
+      iex> ArkElixir.Block.status(client)
       :world
 
   """

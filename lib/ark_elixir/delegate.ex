@@ -10,7 +10,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.count
+      iex> ArkElixir.Delegate.count(client)
       :world
 
   """
@@ -24,7 +24,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.search
+      iex> ArkElixir.Delegate.search(client)
       :world
 
   """
@@ -38,7 +38,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.voters
+      iex> ArkElixir.Delegate.voters(client)
       :world
 
   """
@@ -52,7 +52,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.delegate
+      iex> ArkElixir.Delegate.delegate(client)
       :world
 
   """
@@ -66,7 +66,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.delegates
+      iex> ArkElixir.Delegate.delegates(client)
       :world
 
   """
@@ -80,7 +80,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.fee
+      iex> ArkElixir.Delegate.fee(client)
       :world
 
   """
@@ -94,7 +94,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.forged_by_account
+      iex> ArkElixir.Delegate.forged_by_account(client)
       :world
 
   """
@@ -110,7 +110,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.create
+      iex> ArkElixir.Delegate.create(client)
       :world
 
   """
@@ -132,7 +132,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.next_forgers
+      iex> ArkElixir.Delegate.next_forgers(client)
       :world
 
   """
@@ -146,7 +146,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.enable_forging
+      iex> ArkElixir.Delegate.enable_forging(client)
       :world
 
   """
@@ -160,7 +160,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.disable_forging
+      iex> ArkElixir.Delegate.disable_forging(client)
       :world
 
   """
@@ -174,7 +174,7 @@ defmodule ArkElixir.Delegate do
 
   ## Examples
 
-      iex> ArkElixir.Delegate.forging_status
+      iex> ArkElixir.Delegate.forging_status(client)
       :world
 
   """

@@ -8,7 +8,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.delegate
+      iex> ArkElixir.Builder.delegate(client)
       :world
 
   """
@@ -22,7 +22,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.multisignature
+      iex> ArkElixir.Builder.multisignature(client)
       :world
 
   """
@@ -36,7 +36,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.signature
+      iex> ArkElixir.Builder.signature(client)
       :world
 
   """
@@ -50,7 +50,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.transaction
+      iex> ArkElixir.Builder.transaction(client)
       :world
 
   """
@@ -64,7 +64,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.vote
+      iex> ArkElixir.Builder.vote(client)
       :world
 
   """
@@ -78,7 +78,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.unvote
+      iex> ArkElixir.Builder.unvote(client)
       :world
 
   """
@@ -92,7 +92,7 @@ defmodule ArkElixir.Builder do
 
   ## Examples
 
-      iex> ArkElixir.Builder.build
+      iex> ArkElixir.Builder.build(client)
       :world
 
   """

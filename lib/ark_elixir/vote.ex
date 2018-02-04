@@ -10,7 +10,7 @@ defmodule ArkElixir.Vote do
 
   ## Examples
 
-      iex> ArkElixir.Vote.vote
+      iex> ArkElixir.Vote.vote(client)
       :world
 
   """
@@ -32,7 +32,7 @@ defmodule ArkElixir.Vote do
 
   ## Examples
 
-      iex> ArkElixir.Vote.unvote
+      iex> ArkElixir.Vote.unvote(client)
       :world
 
   """
