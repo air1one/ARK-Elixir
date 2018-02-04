@@ -87,16 +87,7 @@ defmodule ArkElixir.Builder do
     build(client, "vote.deleteVote", parameters)
   end
 
-  @doc """
-  Create a new signed transaction.
-
-  ## Examples
-
-      iex> ArkElixir.Builder.build(client)
-      :world
-
-  """
-  @spec unvote(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
+  @spec build(ArkElixir.Client, String.t(), Keyword.t()) :: ArkElixir.response()
   defp build(client, template, parameters) do
     nethashes = %{
       "6e84d08bd299ed97c212c886c98a57e36545c8f5d645ca7eeae63a8bd62d8988" => 0x17,
@@ -112,7 +103,7 @@ defmodule ArkElixir.Builder do
     IO.write(fd, script)
     File.close(fd)
 
-    {output, exit_code} = System.cmd("node", [file_path])
+    output = System.cmd("node", [file_path])
 
     File.rm(file_path)
 

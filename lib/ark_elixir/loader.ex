@@ -11,7 +11,7 @@ defmodule ArkElixir.Loader do
   ## Examples
 
       iex> ArkElixir.Loader.status(client)
-      :world
+      %{"blocksCount" => 0, "loaded" => false, "now" => 2346599, "success" => true}
 
   """
   @spec status(ArkElixir.Client) :: ArkElixir.response()
@@ -25,7 +25,7 @@ defmodule ArkElixir.Loader do
   ## Examples
 
       iex> ArkElixir.Loader.sync(client)
-      :world
+      %{"blocks" => -13, "height" => 2492181, "id" => "7188317292059640668", "success" => true, "syncing" => false}
 
   """
   @spec sync(ArkElixir.Client) :: ArkElixir.response()
@@ -39,7 +39,7 @@ defmodule ArkElixir.Loader do
   ## Examples
 
       iex> ArkElixir.Loader.autoconfigure(client)
-      :world
+      %{"network" => %{"explorer" => "http://dexplorer.ark.io", "nethash" => "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23", "symbol" => "DѦ", "token" => "DARK", "version" => 30}, "success" => true}
 
   """
   @spec autoconfigure(ArkElixir.Client) :: ArkElixir.response()
