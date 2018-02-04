@@ -11,90 +11,56 @@ defmodule ArkElixir.TransportTest do
             arkjs: "/usr/local/lib/node_modules/arkjs"
           })
 
-  @tag :skip
   test "call ArkElixir.Transport.list" do
     response = list(@client)
 
     assert(response["success"] === true)
   end
 
-  @tag :skip
   test "call ArkElixir.Transport.blocks_common" do
-    response =
-      blocks_common(
-        @client,
-        'recipientId'
-      )
+    response = blocks_common(@client, ["8016767837068034280"])
 
-    assert(response["success"] === true)
+    assert(response["common"]["id"] === "8016767837068034280")
   end
 
-  @tag :skip
   test "call ArkElixir.Transport.block" do
     response =
       block(
         @client,
-        'recipientId'
+        "8016767837068034280"
       )
 
-    assert(response["success"] === true)
+    assert(response["id"] === "8016767837068034280")
   end
 
-  @tag :skip
   test "call ArkElixir.Transport.blocks" do
     response = blocks(@client)
 
     assert(response["success"] === true)
   end
 
-  @tag :skip
-  test "call ArkElixir.Transport.create_block" do
-    response =
-      create_block(
-        @client,
-        'recipientId'
-      )
-
-    assert(response["success"] === true)
-  end
-
-  @tag :skip
   test "call ArkElixir.Transport.transactions" do
     response = transactions(@client)
 
     assert(response["success"] === true)
   end
 
-  @tag :skip
   test "call ArkElixir.Transport.transactions_from_ids" do
     response =
       transactions_from_ids(
         @client,
-        'recipientId'
+        ["83ef2532e0c7c2070fad98b5c1a3d63e0d18460acf2696eafa0e852c1dfabf79"]
       )
 
     assert(response["success"] === true)
   end
 
-  @tag :skip
-  test "call ArkElixir.Transport.create_transactions" do
-    response =
-      create_transactions(
-        @client,
-        'recipientId'
-      )
-
-    assert(response["success"] === true)
-  end
-
-  @tag :skip
   test "call ArkElixir.Transport.height" do
     response = height(@client)
 
     assert(response["success"] === true)
   end
 
-  @tag :skip
   test "call ArkElixir.Transport.status" do
     response = status(@client)
 

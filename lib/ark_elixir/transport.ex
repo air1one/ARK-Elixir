@@ -30,7 +30,7 @@ defmodule ArkElixir.Transport do
   """
   @spec blocks_common(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def blocks_common(client, ids) do
-    get(client, 'peer/blocks/common', %{ids: ids})
+    get(client, 'peer/blocks/common', %{ids: Poison.encode!(Enum.join(ids, ","))})
   end
 
   @doc """
@@ -66,20 +66,6 @@ defmodule ArkElixir.Transport do
 
   ## Examples
 
-      iex> ArkElixir.Transport.create_block
-      :world
-
-  """
-  @spec create_block(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
-  def create_block(client, block) do
-    post(client, 'peer/blocks', %{block: block})
-  end
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
       iex> ArkElixir.Transport.transactions
       :world
 
@@ -100,7 +86,7 @@ defmodule ArkElixir.Transport do
   """
   @spec transactions_from_ids(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
   def transactions_from_ids(client, ids) do
-    get(client, 'peer/transactionsFromIds', %{ids: ids})
+    get(client, 'peer/transactionsFromIds', %{ids: Enum.join(ids, ",")})
   end
 
   @doc """
