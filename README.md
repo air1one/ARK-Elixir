@@ -4,7 +4,7 @@
     <img src="https://github.com/faustbrian/ARK-Elixir/blob/master/banner.png" />
 </p>
 
-> A [Elixir](https://elixir-lang.org/) bridge for ARK.
+> An [ARK](https://github.com/ArkEcosystem/ark-node) bridge for Elixir.
 
 ## Installation
 
