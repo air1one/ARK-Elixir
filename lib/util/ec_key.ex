@@ -21,8 +21,8 @@ defmodule ArkElixir.Util.EcKey do
     BtcCore.compress(BtcCore.privkey_to_pubkey(private_key))
   end
 
-  def private_key_to_address(private_key) do
-    BtcCore.privkey_to_address(private_key, 0x1e)
+  def private_key_to_address(private_key, network_address \\ 0x17) do
+    private_key |> private_key_to_public_key |> public_key_to_address(network_address)
   end
 
   def secret_to_public_key(secret) do
@@ -31,10 +31,10 @@ defmodule ArkElixir.Util.EcKey do
       |> private_key_to_public_key
   end
 
-  def secret_to_address(secret) do
+  def secret_to_address(secret, network_address \\ 0x17) do
     secret
       |> get_private_key
-      |> private_key_to_address
+      |> private_key_to_address(network_address)
   end
 
   defp encode_sequence(r_encoded, s_encoded) do
@@ -59,5 +59,10 @@ defmodule ArkElixir.Util.EcKey do
 
   defp byte_length(string) do
     div(bit_size(string), 8)
+  end
+
+  defp public_key_to_address(public_key, network_address \\ <<0x1e>>) do
+    ripemd_public_key = :crypto.hash(:ripemd160, elem(Base.decode16(public_key, case: :lower), 1))
+    ArkElixir.Util.Base58Check.encode58check(network_address, ripemd_public_key)
   end
 end

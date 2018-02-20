@@ -24,7 +24,10 @@ defmodule ArkElixir.MixProject do
     [
       {:httpoison, "~> 1.0"},
       {:poison, "~> 3.1"},
-      {:temp, "~> 0.4"}
+      {:temp, "~> 0.4"},
+      {:exbtc, "~> 0.1.3"},
+      {:base58, "~> 0.1.0"},
+      {:mock, "~> 0.3.0", only: :test}
     ]
   end
 end
