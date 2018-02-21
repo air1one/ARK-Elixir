@@ -7,7 +7,8 @@ defmodule ArkElixir.AccountTest do
             ip: "dexplorer.ark.io",
             port: 8443,
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
-            version: "1.1.1"
+            version: "1.1.1",
+            network_address: ArkElixir.Client.devnet_network_address
           })
 
   @account "DLsCPHjjq1XL52hdHoJ91A56W7DR2faUu3"

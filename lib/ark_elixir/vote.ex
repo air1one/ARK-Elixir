@@ -21,7 +21,7 @@ defmodule ArkElixir.Vote do
         ["+" <> delegate],
         secret,
         second_secret,
-        <<0x1e>>
+        client.network_address
       ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
@@ -43,7 +43,7 @@ defmodule ArkElixir.Vote do
         ["-" <> delegate],
         secret,
         second_secret,
-        <<0x1e>>
+        client.network_address
       ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})

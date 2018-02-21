@@ -61,7 +61,7 @@ defmodule ArkElixir.Util.EcKey do
     div(bit_size(string), 8)
   end
 
-  defp public_key_to_address(public_key, network_address \\ <<0x1e>>) do
+  defp public_key_to_address(public_key, network_address \\ <<0x17>>) do
     ripemd_public_key = :crypto.hash(:ripemd160, elem(Base.decode16(public_key, case: :lower), 1))
     ArkElixir.Util.Base58Check.encode58check(network_address, ripemd_public_key)
   end
