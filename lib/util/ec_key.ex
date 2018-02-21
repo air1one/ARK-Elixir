@@ -1,6 +1,7 @@
 defmodule ArkElixir.Util.EcKey do
 
   alias Exbtc.Core, as: BtcCore
+  require ArkElixir.Util.Der
 
   def sign(message, secret) do
     private_key = get_private_key(secret)
@@ -9,7 +10,7 @@ defmodule ArkElixir.Util.EcKey do
       private_key
     )
 
-    encode_sequence(encode_integer(r), encode_integer(s))
+    ArkElixir.Util.Der.encode_sequence(r, s)
       |> Base.encode16(case: :lower)
   end
 
@@ -36,31 +37,7 @@ defmodule ArkElixir.Util.EcKey do
       |> get_private_key
       |> private_key_to_address(network_address)
   end
-
-  defp encode_sequence(r_encoded, s_encoded) do
-    combined = r_encoded <> s_encoded
-    <<0x30>> <> <<byte_length(combined)>> <> combined
-  end
-
-  defp encode_integer(integer) do
-    h = integer |> Integer.to_string(16)
-    s = case Integer.mod(String.length(h), 2) do
-      0 -> elem(Base.decode16(h), 1)
-      1 -> elem(Base.decode16("0" <> h), 1)
-    end
-
-    <<num, _ ::binary>> = s
-    if num <= 0x7f do
-      <<2, byte_length(s)>> <> s
-    else
-      <<2, byte_length(s) + 1, 0>> <> s
-    end
-  end
-
-  defp byte_length(string) do
-    div(bit_size(string), 8)
-  end
-
+  
   defp public_key_to_address(public_key, network_address \\ <<0x17>>) do
     ripemd_public_key = :crypto.hash(:ripemd160, elem(Base.decode16(public_key, case: :lower), 1))
     ArkElixir.Util.Base58Check.encode58check(network_address, ripemd_public_key)
