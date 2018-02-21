@@ -7,8 +7,7 @@ defmodule ArkElixir.VoteTest do
             ip: "dexplorer.ark.io",
             port: 8443,
             nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
-            version: "1.1.1",
-            arkjs: "/usr/local/lib/node_modules/arkjs"
+            version: "1.1.1"
           })
 
   @tag :skip

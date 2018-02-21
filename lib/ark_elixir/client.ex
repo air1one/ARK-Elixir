@@ -2,15 +2,14 @@ defmodule ArkElixir.Client do
   @moduledoc """
   Documentation for ArkElixir.Client.
   """
-  defstruct protocol: nil, ip: nil, port: nil, nethash: nil, version: nil, arkjs: nil
+  defstruct protocol: nil, ip: nil, port: nil, nethash: nil, version: nil
 
   @type t :: %{
           protocol: binary,
           ip: binary,
           port: binary,
           nethash: binary,
-          version: binary,
-          arkjs: binary
+          version: binary
         }
 
   @doc """
@@ -29,8 +28,7 @@ defmodule ArkElixir.Client do
       ip: server.ip,
       port: server.port,
       nethash: server.nethash,
-      version: server.version,
-      arkjs: server.arkjs
+      version: server.version
     }
   end
 end

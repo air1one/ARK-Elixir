@@ -103,14 +103,16 @@ defmodule ArkElixir.Util.TransactionBuilder do
   @spec create_delegate(String.t(), String.t(), String.t()) :: Map
   def create_delegate(username, secret, second_secret \\ nil) do
     key = ArkElixir.Util.EcKey.get_private_key(secret)
+    public_key = ArkElixir.Util.EcKey.private_key_to_public_key(key)
 
     transaction = %{
       :type => TransactionType.delegate,
       :fee => TransactionFee.delegate,
-      :sender_public_key => ArkElixir.Util.EcKey.private_key_to_public_key(key),
+      :sender_public_key => public_key,
       :asset => %{
         :delegate => %{
-          :username => username
+          :username => username,
+          :public_key => public_key
         }
       },
       :amount => 0,
@@ -146,6 +148,48 @@ defmodule ArkElixir.Util.TransactionBuilder do
     }
 
     add_signatures_and_create_id(transaction, secret, second_secret)
+  end
+
+  @spec transaction_to_params(Map.t()) :: Map
+  def transaction_to_params(transaction) do
+    valid_param_keys = [:amount, :fee, :id, :signature, :timestamp, :type]
+
+    sign_signature = if transaction[:sign_signature] do
+      %{ :signSignature => transaction[:sign_signature] }
+    else
+      %{}
+    end
+
+    transformed = %{
+      :recipientId => transaction[:recipient_id],
+      :vendorField => transaction[:vendor_field],
+      :senderPublicKey => transaction[:sender_public_key]
+    }
+
+    asset = cond do
+      transaction[:type] == TransactionType.transfer -> %{}
+
+      transaction[:type] == TransactionType.vote || transaction[:type] == TransactionType.multisignature ->
+        %{:asset => transaction[:asset]}
+
+      transaction[:type] == TransactionType.second_signature ->
+        %{:asset => %{:signature => %{:publicKey => transaction[:asset][:signature][:public_key]}}}
+
+      transaction[:type] == TransactionType.delegate ->
+        %{
+          :asset => %{
+            :delegate => %{
+              :username => transaction[:asset][:delegate][:username],
+              :publicKey => transaction[:asset][:delegate][:public_key]
+            }
+          }
+        }
+    end
+
+    Map.take(transaction, valid_param_keys)
+      |> Map.merge(sign_signature)
+      |> Map.merge(transformed)
+      |> Map.merge(asset)
   end
 
   def seconds_since_epoch do

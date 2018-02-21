@@ -15,14 +15,14 @@ defmodule ArkElixir.Vote do
 
   """
   @spec vote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
-  def vote(client, secret, delegate, secondSecret \\ nil) do
+  def vote(client, secret, delegate, second_secret \\ nil) do
     transaction =
-      ArkElixir.Builder.unvote(
-        client,
-        secret: secret,
-        delegate: delegate,
-        secondSecret: secondSecret
-      )
+      ArkElixir.Util.TransactionBuilder.create_vote(
+        ["+" <> delegate],
+        secret,
+        second_secret,
+        <<0x1e>>
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end
@@ -37,14 +37,14 @@ defmodule ArkElixir.Vote do
 
   """
   @spec unvote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
-  def unvote(client, secret, delegate, secondSecret \\ nil) do
+  def unvote(client, secret, delegate, second_secret \\ nil) do
     transaction =
-      ArkElixir.Builder.unvote(
-        client,
-        secret: secret,
-        delegate: delegate,
-        secondSecret: secondSecret
-      )
+      ArkElixir.Util.TransactionBuilder.create_vote(
+        ["-" <> delegate],
+        secret,
+        second_secret,
+        <<0x1e>>
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end
