@@ -29,14 +29,13 @@ defmodule ArkElixir.Signature do
 
   """
   @spec create(ArkElixir.Client, String.t(), String.t()) :: ArkElixir.response()
-  def create(client, secret, secondSecret) do
-    parameters =
-      ArkElixir.Builder.signature(
-        client,
-        secret: secret,
-        secondSecret: secondSecret
-      )
+  def create(client, secret, second_secret) do
+    transaction =
+      ArkElixir.Util.TransactionBuilder.create_second_signature(
+        second_secret,
+        secret
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
-    post(client, 'peer/transactions', %{secret: secret})
+    post(client, 'peer/transactions', %{transactions: [transaction]})
   end
 end

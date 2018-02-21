@@ -2,7 +2,7 @@ defmodule ArkElixir.Client do
   @moduledoc """
   Documentation for ArkElixir.Client.
   """
-  defstruct protocol: nil, ip: nil, port: nil, nethash: nil, version: nil, arkjs: nil
+  defstruct protocol: nil, ip: nil, port: nil, nethash: nil, version: nil, network_address: nil
 
   @type t :: %{
           protocol: binary,
@@ -10,8 +10,14 @@ defmodule ArkElixir.Client do
           port: binary,
           nethash: binary,
           version: binary,
-          arkjs: binary
+          network_address: binary
         }
+
+  @mainnet_network_address <<0x17>>
+  @devnet_network_address <<0x1e>>
+
+  def mainnet_network_address, do: @mainnet_network_address
+  def devnet_network_address, do: @devnet_network_address
 
   @doc """
   Create a new instance.
@@ -30,7 +36,7 @@ defmodule ArkElixir.Client do
       port: server.port,
       nethash: server.nethash,
       version: server.version,
-      arkjs: server.arkjs
+      network_address: server.network_address
     }
   end
 end

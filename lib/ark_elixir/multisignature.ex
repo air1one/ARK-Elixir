@@ -42,20 +42,19 @@ defmodule ArkElixir.MultiSignature do
       :world
 
   """
-  @spec create(ArkElixir.Client, String.t(), String.t(), String.t(), Integer.t(), Integer.t()) ::
+  @spec create(ArkElixir.Client, String.t(), String.t(), List.t(), Integer.t(), Integer.t()) ::
           ArkElixir.response()
-  def create(client, secret, secondSecret, keysgroup, lifetime, min) do
-    parameters =
-      ArkElixir.Builder.multisignature(
-        client,
-        secret: secret,
-        secondSecret: secondSecret,
-        keysgroup: keysgroup,
-        lifetime: lifetime,
-        min: min
-      )
+  def create(client, secret, second_secret, keysgroup, lifetime, min) do
+    transaction =
+      ArkElixir.Util.TransactionBuilder.create_multisignature(
+        secret,
+        second_secret,
+        keysgroup,
+        lifetime,
+        min
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
-    post(client, 'peer/transactions', %{secret: secret})
+    post(client, 'peer/transactions', %{transactions: [transaction]})
   end
 
   @doc """

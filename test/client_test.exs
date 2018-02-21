@@ -9,7 +9,7 @@ defmodule ArkElixir.ClientTest do
         port: 8443,
         nethash: "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
         version: "1.1.1",
-        arkjs: "/usr/local/lib/node_modules/arkjs"
+        network_address: ArkElixir.Client.devnet_network_address
       })
 
     assert(client.protocol == "https")
@@ -17,6 +17,6 @@ defmodule ArkElixir.ClientTest do
     assert(client.port == 8443)
     assert(client.nethash == "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23")
     assert(client.version == "1.1.1")
-    assert(client.arkjs == "/usr/local/lib/node_modules/arkjs")
+    assert(client.network_address == <<0x1e>>)
   end
 end

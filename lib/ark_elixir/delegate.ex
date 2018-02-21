@@ -115,14 +115,13 @@ defmodule ArkElixir.Delegate do
 
   """
   @spec create(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
-  def create(client, secret, username, secondSecret \\ nil) do
+  def create(client, secret, username, second_secret \\ nil) do
     transaction =
-      ArkElixir.Builder.delegate(
-        client,
-        username: username,
-        secret: secret,
-        secondSecret: secondSecret
-      )
+      ArkElixir.Util.TransactionBuilder.create_delegate(
+        username,
+        secret,
+        second_secret
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end

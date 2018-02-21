@@ -72,16 +72,15 @@ defmodule ArkElixir.Transaction do
   """
   @spec create(ArkElixir.Client, String.t(), String.t(), String.t(), String.t(), String.t()) ::
           ArkElixir.response()
-  def create(client, recipientId, amount, vendorField, secret, secondSecret \\ nil) do
+  def create(client, recipient_id, amount, vendor_field, secret, second_secret \\ nil) do
     transaction =
-      ArkElixir.Builder.transaction(
-        client,
-        recipientId: recipientId,
-        amount: amount,
-        vendorField: vendorField,
-        secret: secret,
-        secondSecret: secondSecret
-      )
+      ArkElixir.Util.TransactionBuilder.create_transfer(
+        recipient_id,
+        amount,
+        vendor_field,
+        secret,
+        second_secret
+      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
 
     post(client, 'peer/transactions', %{transactions: [transaction]})
   end
