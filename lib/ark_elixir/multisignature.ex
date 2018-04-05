@@ -6,31 +6,17 @@ defmodule ArkElixir.MultiSignature do
   import ArkElixir
 
   @doc """
-  Get pending multi signature transactions.
+  Get a list of accounts.
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.pending(client)
+      iex> ArkElixir.MultiSignature.accounts(client)
       :world
 
   """
-  @spec pending(ArkElixir.Client, String.t()) :: ArkElixir.response()
-  def pending(client, publicKey) do
-    get(client, 'api/multisignatures/pending', %{publicKey: publicKey})
-  end
-
-  @doc """
-  Sign a new multi signature.
-
-  ## Examples
-
-      iex> ArkElixir.MultiSignature.sign(client)
-      :world
-
-  """
-  @spec sign(ArkElixir.Client, String.t(), String.t(), Keyword.t()) :: ArkElixir.response()
-  def sign(client, transactionId, secret, parameters \\ []) do
-    post(client, 'api/multisignatures/sign', %{transactionId: transactionId, secret: secret})
+  @spec accounts(Tesla.Client.t(), String.t()) :: ArkElixir.response()
+  def accounts(client, public_key) do
+    get(client, "api/multisignatures/accounts", query: [publicKey: public_key])
   end
 
   @doc """
@@ -42,33 +28,48 @@ defmodule ArkElixir.MultiSignature do
       :world
 
   """
-  @spec create(ArkElixir.Client, String.t(), String.t(), List.t(), Integer.t(), Integer.t()) ::
-          ArkElixir.response()
-  def create(client, secret, second_secret, keysgroup, lifetime, min) do
-    transaction =
-      ArkElixir.Util.TransactionBuilder.create_multisignature(
-        secret,
-        second_secret,
-        keysgroup,
-        lifetime,
-        min
-      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
-
-    post(client, 'peer/transactions', %{transactions: [transaction]})
+  @spec create(
+    Tesla.Client.t(),
+    String.t(),
+    String.t(),
+    List.t(),
+    Integer.t(),
+    Integer.t()
+  ) :: ArkElixir.response()
+  def create(_client, _secret, _second_secret, _keysgroup, _lifetime, _min) do
+    "POST api/multisignatures has been deprecated."
   end
 
   @doc """
-  Get a list of accounts.
+  Get pending multi signature transactions.
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.accounts(client)
+      iex> ArkElixir.MultiSignature.pending(client)
       :world
 
   """
-  @spec accounts(ArkElixir.Client, String.t()) :: ArkElixir.response()
-  def accounts(client, publicKey) do
-    get(client, 'api/multisignatures/accounts', %{publicKey: publicKey})
+  @spec pending(Tesla.Client.t(), String.t()) :: ArkElixir.response()
+  def pending(client, public_key) do
+    get(client, "api/multisignatures/pending", query: [publicKey: public_key])
   end
 
+  @doc """
+  Sign a new multi signature.
+
+  ## Examples
+
+      iex> ArkElixir.MultiSignature.sign(client)
+      :world
+
+  """
+  @spec sign(
+    Tesla.Client.t(),
+    String.t(),
+    String.t(),
+    Keyword.t()
+  ) :: ArkElixir.response()
+  def sign(_client, _transaction_id, _secret, _parameters \\ []) do
+    raise "POST api/multisignatures/sign has been deprecated."
+  end
 end

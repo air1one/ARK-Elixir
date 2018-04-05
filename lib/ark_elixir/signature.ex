@@ -5,19 +5,7 @@ defmodule ArkElixir.Signature do
 
   import ArkElixir
 
-  @doc """
-  Get the fee for a signature.
-
-  ## Examples
-
-      iex> ArkElixir.Signature.fee(client)
-      :world
-
-  """
-  @spec fee(ArkElixir.Client) :: ArkElixir.response()
-  def fee(client) do
-    get(client, 'api/signatures/fee')
-  end
+  alias ArkElixir.Util.TransactionBuilder
 
   @doc """
   Create a new signature.
@@ -28,14 +16,27 @@ defmodule ArkElixir.Signature do
       :world
 
   """
-  @spec create(ArkElixir.Client, String.t(), String.t()) :: ArkElixir.response()
+  @spec create(Tesla.Client.t(), String.t(), String.t()) :: ArkElixir.response()
   def create(client, secret, second_secret) do
     transaction =
-      ArkElixir.Util.TransactionBuilder.create_second_signature(
-        second_secret,
-        secret
-      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
+      second_secret
+      |> TransactionBuilder.create_second_signature(secret)
+      |> TransactionBuilder.transaction_to_params
 
-    post(client, 'peer/transactions', %{transactions: [transaction]})
+    post(client, "peer/transactions", %{transactions: [transaction]})
+  end
+
+  @doc """
+  Get the fee for a signature.
+
+  ## Examples
+
+      iex> ArkElixir.Signature.fee(client)
+      :world
+
+  """
+  @spec fee(Tesla.Client.t()) :: ArkElixir.response()
+  def fee(client) do
+    get(client, "api/signatures/fee")
   end
 end

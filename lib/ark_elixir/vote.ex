@@ -5,6 +5,8 @@ defmodule ArkElixir.Vote do
 
   import ArkElixir
 
+  alias ArkElixir.Util.TransactionBuilder
+
   @doc """
   Sign and create a new vote.
 
@@ -14,17 +16,22 @@ defmodule ArkElixir.Vote do
       :world
 
   """
-  @spec vote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
-  def vote(client, secret, delegate, second_secret \\ nil) do
-    transaction =
-      ArkElixir.Util.TransactionBuilder.create_vote(
-        ["+" <> delegate],
-        secret,
-        second_secret,
-        client.network_address
-      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
+  @spec vote(
+    Tesla.Client.t(),
+    String.t(),
+    String.t(),
+    String.t(),
+    String.t()
+  ) :: ArkElixir.response()
+  def vote(client, network_address, secret, delegate, second_secret \\ nil) do
+    delegate = ["+#{delegate}"]
 
-    post(client, 'peer/transactions', %{transactions: [transaction]})
+    transaction =
+      delegate
+      |> TransactionBuilder.create_vote(secret, second_secret, network_address)
+      |> TransactionBuilder.transaction_to_params
+
+    post(client, "peer/transactions", %{transactions: [transaction]})
   end
 
   @doc """
@@ -36,16 +43,21 @@ defmodule ArkElixir.Vote do
       :world
 
   """
-  @spec unvote(ArkElixir.Client, String.t(), String.t(), String.t()) :: ArkElixir.response()
-  def unvote(client, secret, delegate, second_secret \\ nil) do
-    transaction =
-      ArkElixir.Util.TransactionBuilder.create_vote(
-        ["-" <> delegate],
-        secret,
-        second_secret,
-        client.network_address
-      ) |> ArkElixir.Util.TransactionBuilder.transaction_to_params
+  @spec unvote(
+    Tesla.Client.t(),
+    String.t(),
+    String.t(),
+    String.t(),
+    String.t()
+  ) :: ArkElixir.response()
+  def unvote(client, network_address, secret, delegate, second_secret \\ nil) do
+    delegate = ["-#{delegate}"]
 
-    post(client, 'peer/transactions', %{transactions: [transaction]})
+    transaction =
+      delegate
+      |> TransactionBuilder.create_vote(secret, second_secret, network_address)
+      |> TransactionBuilder.transaction_to_params
+
+    post(client, "peer/transactions", %{transactions: [transaction]})
   end
 end

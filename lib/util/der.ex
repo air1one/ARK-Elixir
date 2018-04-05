@@ -1,9 +1,10 @@
 defmodule ArkElixir.Util.Der do
-
   def encode_sequence(r, s) do
     combined = encode_integer(r) <> encode_integer(s)
     <<0x30>> <> <<byte_length(combined)>> <> combined
   end
+
+  # private
 
   defp encode_integer(integer) do
     h = integer |> Integer.to_string(16)

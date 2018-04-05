@@ -1,18 +1,10 @@
 defmodule ArkElixir.Client do
   @moduledoc """
   Documentation for ArkElixir.Client.
+
+  This module generates a Tesla.Client for use in future requests. Feel free
+  to make your own Tesla Client struct and pass that around.
   """
-  defstruct protocol: nil, ip: nil, port: nil, nethash: nil, version: nil, network_address: nil
-
-  @type t :: %{
-          protocol: binary,
-          ip: binary,
-          port: binary,
-          nethash: binary,
-          version: binary,
-          network_address: binary
-        }
-
   @mainnet_network_address <<0x17>>
   @devnet_network_address <<0x1e>>
 
@@ -28,15 +20,42 @@ defmodule ArkElixir.Client do
       :world
 
   """
-  @spec new(t) :: t
-  def new(server) do
-    %__MODULE__{
-      protocol: server.protocol,
-      ip: server.ip,
-      port: server.port,
-      nethash: server.nethash,
-      version: server.version,
-      network_address: server.network_address
-    }
+  @spec new(Map.t) :: Tesla.Client.t
+  def new(%{
+    nethash: nethash,
+    network_address: network_address,
+    url: url,
+    version: version
+  })
+  when is_bitstring(nethash)
+  and is_bitstring(network_address)
+  and is_bitstring(url)
+  and is_bitstring(version) do
+    headers = [
+      {"Content-Type", "application/json"},
+      {"nethash", nethash},
+      {"version", version},
+      {"port", 1}
+    ]
+
+    pre = [
+      {Tesla.Middleware.BaseUrl, [url]},
+      {Tesla.Middleware.Logger, []},
+      {Tesla.Middleware.Headers, headers},
+      {Tesla.Middleware.JSON, []}
+    ]
+
+    Tesla.build_client(pre)
+  end
+
+  def new(%{ip: ip, port: port, protocol: protocol} = opts) do
+    opts
+    |> Map.drop([:ip, :port, :protocol])
+    |> Map.put(:url, "#{protocol}://#{ip}:#{port}")
+    |> new
+  end
+
+  def new(_invalid) do
+    :error
   end
 end

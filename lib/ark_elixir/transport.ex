@@ -6,34 +6,6 @@ defmodule ArkElixir.Transport do
   import ArkElixir
 
   @doc """
-  Get a list of peers.
-
-  ## Examples
-
-      iex> ArkElixir.Transport.list(client)
-      :world
-
-  """
-  @spec list(ArkElixir.Client) :: ArkElixir.response()
-  def list(client) do
-    get(client, 'peer/list')
-  end
-
-  @doc """
-  Get a list of blocks by ids.
-
-  ## Examples
-
-      iex> ArkElixir.Transport.blocks_common(client)
-      :world
-
-  """
-  @spec blocks_common(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
-  def blocks_common(client, ids) do
-    get(client, 'peer/blocks/common', %{ids: Poison.encode!(Enum.join(ids, ","))})
-  end
-
-  @doc """
   Get a single block.
 
   ## Examples
@@ -42,9 +14,9 @@ defmodule ArkElixir.Transport do
       :world
 
   """
-  @spec block(ArkElixir.Client, String.t()) :: ArkElixir.response()
+  @spec block(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def block(client, id) do
-    get(client, 'peer/block', %{id: id})
+    get(client, "peer/block", query: [id: id])
   end
 
   @doc """
@@ -56,37 +28,23 @@ defmodule ArkElixir.Transport do
       :world
 
   """
-  @spec blocks(ArkElixir.Client) :: ArkElixir.response()
+  @spec blocks(Tesla.Client.t()) :: ArkElixir.response()
   def blocks(client) do
-    get(client, 'peer/blocks')
+    get(client, "peer/blocks")
   end
 
   @doc """
-  Get a list of transactions.
+  Get a list of blocks by ids.
 
   ## Examples
 
-      iex> ArkElixir.Transport.transactions(client)
+      iex> ArkElixir.Transport.blocks_common(client)
       :world
 
   """
-  @spec transactions(ArkElixir.Client) :: ArkElixir.response()
-  def transactions(client) do
-    get(client, 'peer/transactions')
-  end
-
-  @doc """
-  Get a list of transactions by ids.
-
-  ## Examples
-
-      iex> ArkElixir.Transport.transactions_from_ids(client)
-      :world
-
-  """
-  @spec transactions_from_ids(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
-  def transactions_from_ids(client, ids) do
-    get(client, 'peer/transactionsFromIds', %{ids: Enum.join(ids, ",")})
+  @spec blocks_common(Tesla.Client.t(), List.t()) :: ArkElixir.response()
+  def blocks_common(client, ids) do
+    get(client, "peer/blocks/common", query: [ids: Enum.join(ids, ",")])
   end
 
   @doc """
@@ -98,9 +56,12 @@ defmodule ArkElixir.Transport do
       :world
 
   """
-  @spec create_transactions(ArkElixir.Client, Keyword.t()) :: ArkElixir.response()
+  @spec create_transactions(
+    Tesla.Client.t(),
+    List.t()
+  ) :: ArkElixir.response()
   def create_transactions(client, transactions) do
-    post(client, 'peer/transactions', %{transactions: [transactions]})
+    post(client, "peer/transactions", %{transactions: transactions})
   end
 
   @doc """
@@ -112,9 +73,23 @@ defmodule ArkElixir.Transport do
       :world
 
   """
-  @spec height(ArkElixir.Client) :: ArkElixir.response()
+  @spec height(Tesla.Client.t()) :: ArkElixir.response()
   def height(client) do
-    get(client, 'peer/height')
+    get(client, "peer/height")
+  end
+
+  @doc """
+  Get a list of peers.
+
+  ## Examples
+
+      iex> ArkElixir.Transport.list(client)
+      :world
+
+  """
+  @spec list(Tesla.Client.t()) :: ArkElixir.response()
+  def list(client) do
+    get(client, "peer/list")
   end
 
   @doc """
@@ -126,8 +101,39 @@ defmodule ArkElixir.Transport do
       :world
 
   """
-  @spec status(ArkElixir.Client) :: ArkElixir.response()
+  @spec status(Tesla.Client.t()) :: ArkElixir.response()
   def status(client) do
-    get(client, 'peer/status')
+    get(client, "peer/status")
+  end
+
+  @doc """
+  Get a list of transactions.
+
+  ## Examples
+
+      iex> ArkElixir.Transport.transactions(client)
+      :world
+
+  """
+  @spec transactions(Tesla.Client.t()) :: ArkElixir.response()
+  def transactions(client) do
+    get(client, "peer/transactions")
+  end
+
+  @doc """
+  Get a list of transactions by ids.
+
+  ## Examples
+
+      iex> ArkElixir.Transport.transactions_from_ids(client)
+      :world
+
+  """
+  @spec transactions_from_ids(
+    Tesla.Client.t(),
+    List.t()
+  ) :: ArkElixir.response()
+  def transactions_from_ids(client, ids) do
+    get(client, "peer/transactionsFromIds", query: [ids: Enum.join(ids, ",")])
   end
 end

@@ -3,126 +3,49 @@ defmodule ArkElixir do
   Documentation for ArkElixir.
   """
 
-  use HTTPoison.Base
-  alias ArkElixir.Client
-
-  @type response :: %{String.t() => any}
+  @type response :: {:ok, any} | {:error, any}
 
   @doc """
-  Sends an HTTP GET request to a node.
-
-  ## Examples
-
-      iex> ArkElixir.get(client)
-      :world
-
+  Shortcut to `ArkElixir.Client.new/1`
   """
-  @spec get(ArkElixir.Client, String.t(), Keyword.t()) :: response
-  def get(client, path, parameters) do
-    response =
-      HTTPoison.get!(
-        build_url(client, path) <> build_query(parameters),
-        build_headers(client)
-      )
-
-    Poison.decode!(response.body)
+  @spec client(Keyword.t()) :: Tesla.Client.t()
+  def client(opts) do
+    ArkElixir.Client.new(opts)
   end
 
   @doc """
-  Sends an HTTP POST request to a node.
-
-  ## Examples
-
-      iex> ArkElixir.post(client)
-      :world
-
+  Shortcut to `Tesla.get/4`
   """
-  @spec post(ArkElixir.Client, String.t(), Keyword.t()) :: response
-  def post(client, path, parameters) do
-    payload = Poison.encode!(parameters)
-
-    response =
-      HTTPoison.post!(
-        build_url(client, path),
-        payload,
-        build_headers(client)
-      )
-
-    Poison.decode!(response.body)
+  @spec get(Tesla.Client.t(), String.t(), Keyword.t()) :: response()
+  def get(client, url, opts \\ []) do
+    # TODO: parse response
+    Tesla.get(client, url, opts)
   end
 
   @doc """
-  Sends an HTTP PUT request to a node.
-
-  ## Examples
-
-      iex> ArkElixir.put(client)
-      :world
-
+  Alias for `put/4`
   """
-  @spec put(ArkElixir.Client, String.t(), Keyword.t()) :: response
-  def put(client, path, parameters) do
-    payload = Poison.encode!(parameters)
-
-    response =
-      HTTPoison.put!(
-        build_url(client, path),
-        payload,
-        build_headers(client)
-      )
-
-    Poison.decode!(response.body)
+  @spec patch(Tesla.Client.t(), String.t(), any(), Keyword.t()) :: response()
+  def patch(client, url, body, opts \\ []) do
+    # TODO: parse response
+    Tesla.put(client, url, body, opts)
   end
 
   @doc """
-  Build an URL based on the ArkElixir.Client.
-
-  ## Examples
-
-      iex> ArkElixir.build_url(client)
-      :world
-
+  Shortcut to `Tesla.post/4`
   """
-  @spec build_url(ArkElixir.Client, String.t()) :: response
-  defp build_url(client, path) do
-    "#{client.protocol}://#{client.ip}:#{client.port}/#{path}"
+  @spec post(Tesla.Client.t(), String.t(), any(), Keyword.t()) :: response()
+  def post(client, url, body, opts \\ []) do
+    # TODO: parse response
+    Tesla.post(client, url, body, opts)
   end
 
   @doc """
-  Build request headers based on the ArkElixir.Client.
-
-  ## Examples
-
-      iex> ArkElixir.build_headers(client)
-      :world
-
+  Shortcut to `Tesla.put/4`
   """
-  @spec build_headers(ArkElixir.Client) :: response
-  defp build_headers(client) do
-    [
-      "Content-Type": "application/json",
-      nethash: "#{client.nethash}",
-      version: "#{client.version}",
-      port: 1
-    ]
-  end
-
-  @doc """
-  Builder an URL query based on the ArkElixir.Client.
-
-  ## Examples
-
-      iex> ArkElixir.build_query(client)
-      :world
-
-  """
-  @spec build_query(Keyword.t()) :: response
-  defp build_query(parameters) do
-    queryString =
-      parameters
-      |> Enum.map(fn {key, value} -> "#{key}=#{value}" end)
-      |> Enum.join("&")
-
-    "?" <> queryString
+  @spec put(Tesla.Client.t(), String.t(), any(), Keyword.t()) :: response()
+  def put(client, url, body, opts \\ []) do
+    # TODO: parse response
+    Tesla.put(client, url, body, opts)
   end
 end
