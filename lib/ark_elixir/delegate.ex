@@ -5,7 +5,7 @@ defmodule ArkElixir.Delegate do
 
   import ArkElixir
 
-  alias ArkElixir.Models.Account
+  alias ArkElixir.Models.{Account, Delegate}
 
   @doc """
   DEPRECATED: CREATE DELEGATE
@@ -46,7 +46,9 @@ defmodule ArkElixir.Delegate do
   """
   @spec delegate(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def delegate(client, parameters \\ []) do
-    get(client, "api/delegates/get", query: parameters)
+    client
+    |> get("api/delegates/get", query: parameters)
+    |> handle_response
   end
 
   @doc """
@@ -198,20 +200,24 @@ defmodule ArkElixir.Delegate do
   def voters(client, public_key) do
     client
     |> get("api/delegates/voters", query: [publicKey: public_key])
-    |> build_voters
+    |> handle_response
   end
 
   # private
 
-  defp build_voters({:ok, %{"accounts" => accounts}}) do
+  defp handle_response({:ok, %{"accounts" => accounts}}) do
     {:ok, Enum.map(accounts, &Account.build/1)}
   end
 
-  defp build_voters({:ok, invalid_response}) do
+  defp handle_response({:ok, %{"delegate" => delegate}}) do
+    {:ok, Delegate.build(delegate)}
+  end
+
+  defp handle_response({:ok, invalid_response}) do
     {:error, invalid_response}
   end
 
-  defp build_voters(error) do
-    error
+  defp handle_response({:error, _error} = response) do
+    response
   end
 end
