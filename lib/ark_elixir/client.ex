@@ -5,11 +5,11 @@ defmodule ArkElixir.Client do
   This module generates a Tesla.Client for use in future requests. Feel free
   to make your own Tesla Client struct and pass that around.
   """
-  @mainnet_network_address <<0x17>>
   @devnet_network_address <<0x1e>>
+  @mainnet_network_address <<0x17>>
 
-  def mainnet_network_address, do: @mainnet_network_address
   def devnet_network_address, do: @devnet_network_address
+  def mainnet_network_address, do: @mainnet_network_address
 
   @doc """
   Create a new instance.
@@ -38,11 +38,17 @@ defmodule ArkElixir.Client do
       {"port", 1}
     ]
 
+    log_level =
+      case Application.get_env(:ark_elixir, :env, :prod) do
+        :dev -> :debug
+        _ -> :default
+      end
+
     pre = [
-      {Tesla.Middleware.BaseUrl, [url]},
-      {Tesla.Middleware.Logger, []},
+      {Tesla.Middleware.BaseUrl, url},
       {Tesla.Middleware.Headers, headers},
-      {Tesla.Middleware.JSON, []}
+      {Tesla.Middleware.JSON, []},
+      {Tesla.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)
