@@ -5,6 +5,8 @@ defmodule ArkElixir.Peer do
 
   import ArkElixir
 
+  alias ArkElixir.Models.Peer
+
   @doc """
   Get a single peer.
 
@@ -30,7 +32,9 @@ defmodule ArkElixir.Peer do
   """
   @spec peers(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def peers(client, parameters \\ []) do
-    get(client, "api/peers", query: parameters)
+    client
+    |> get("api/peers", query: parameters)
+    |> handle_response
   end
 
   @doc """
@@ -45,5 +49,19 @@ defmodule ArkElixir.Peer do
   @spec version(Tesla.Client.t()) :: ArkElixir.response()
   def version(client) do
     get(client, "api/peers/version")
+  end
+
+  # private
+
+  defp handle_response({:ok, %{"peers" => peers, "success" => true}}) do
+    {:ok, Enum.map(peers, &Peer.build/1)}
+  end
+
+  defp handle_response({:ok, invalid_response}) do
+    {:error, invalid_response}
+  end
+
+  defp handle_response({:error, _error} = response) do
+    response
   end
 end
