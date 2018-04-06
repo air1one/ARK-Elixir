@@ -71,12 +71,19 @@ defmodule ArkElixir.Account do
   ## Examples
 
       iex> ArkElixir.Account.publickey(client)
-      %{"publicKey" => "02df2f0ef3e8b590e556dc5f81853b5dda8ba3543344d28f321e55bf029cede229", "success" => true}
+      {:ok, "02df2f0ef3e8b590e556dc5f81853b5dda8ba3543344d28f321e55bf029cede229"}
 
   """
   @spec publickey(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def publickey(client, address) do
-    get(client, "api/accounts/getPublickey", query: [address: address])
+    case get(client, "api/accounts/getPublickey", query: [address: address]) do
+      {:ok, %{"publicKey" => public_key, "success" => true}} ->
+        {:ok, public_key}
+      {:ok, invalid_response} ->
+        {:error, invalid_response}
+      {:error, _error} = response ->
+        response
+    end
   end
 
   @doc """
