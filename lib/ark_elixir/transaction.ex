@@ -5,6 +5,7 @@ defmodule ArkElixir.Transaction do
 
   import ArkElixir
 
+  alias ArkElixir.Models.Transaction
   alias ArkElixir.Util.TransactionBuilder
 
   @doc """
@@ -73,7 +74,9 @@ defmodule ArkElixir.Transaction do
   """
   @spec transaction(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def transaction(client, id) do
-    get(client, "api/transactions/get", query: [id: id])
+    client
+    |> get("api/transactions/get", query: [id: id])
+    |> handle_response
   end
 
   @doc """
@@ -122,5 +125,19 @@ defmodule ArkElixir.Transaction do
   ) :: ArkElixir.response()
   def unconfirmed_transactions(client, parameters \\ []) do
     get(client, "api/transactions/unconfirmed", query: parameters)
+  end
+
+  # private
+
+  defp handle_response({:ok, %{"transaction" => transaction}}) do
+    {:ok, Transaction.build(transaction)}
+  end
+
+  defp handle_response({:ok, invalid_response}) do
+    {:error, invalid_response}
+  end
+
+  defp handle_response({:error, _error} = response) do
+    response
   end
 end

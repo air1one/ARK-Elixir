@@ -3,6 +3,7 @@ defmodule ArkElixir.Models.Block do
   Block model.
   """
   @derive Jason.Encoder
+
   defstruct [
     :block_signature,
     :confirmations,
