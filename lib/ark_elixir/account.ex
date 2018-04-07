@@ -5,6 +5,8 @@ defmodule ArkElixir.Account do
 
   import ArkElixir
 
+  alias ArkElixir.Models.Account
+
   @doc """
   Get an account.
 
@@ -16,7 +18,9 @@ defmodule ArkElixir.Account do
   """
   @spec account(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def account(client, address) do
-    get(client, "api/accounts", [address: address])
+    client
+    |> get("api/accounts", [address: address])
+    |> handle_response
   end
 
   @doc """
@@ -98,5 +102,19 @@ defmodule ArkElixir.Account do
   @spec top(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def top(client, parameters \\ []) do
     get(client, "api/accounts/top", parameters)
+  end
+
+  # private
+
+  defp handle_response({:ok, %{"account" => account}}) do
+    {:ok, Account.build(account)}
+  end
+
+  defp handle_response({:ok, invalid_response}) do
+    {:error, invalid_response}
+  end
+
+  defp handle_response({:error, _error} = response) do
+    response
   end
 end
