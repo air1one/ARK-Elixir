@@ -90,7 +90,9 @@ defmodule ArkElixir.Transaction do
   """
   @spec transactions(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def transactions(client, parameters \\ []) do
-    get(client, "api/transactions", query: parameters)
+    client
+    |> get("api/transactions", query: parameters)
+    |> handle_response
   end
 
   @doc """
@@ -128,6 +130,10 @@ defmodule ArkElixir.Transaction do
   end
 
   # private
+
+  defp handle_response({:ok, %{"transactions" => transactions}}) do
+    {:ok, Enum.map(transactions, &Transaction.build/1)}
+  end
 
   defp handle_response({:ok, %{"transaction" => transaction}}) do
     {:ok, Transaction.build(transaction)}
