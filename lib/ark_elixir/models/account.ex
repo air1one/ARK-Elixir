@@ -2,6 +2,8 @@ defmodule ArkElixir.Models.Account do
   @moduledoc """
   Account model.
   """
+  @derive Jason.Encoder
+
   defstruct [
     :address,
     :balance,

@@ -2,6 +2,8 @@ defmodule ArkElixir.Models.Delegate do
   @moduledoc """
   Delegate model.
   """
+  @derive Jason.Encoder
+
   defstruct [
     :address,
     :approval,

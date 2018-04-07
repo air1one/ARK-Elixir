@@ -5,6 +5,8 @@ defmodule ArkElixir.Block do
 
   import ArkElixir
 
+  alias ArkElixir.Models.Block
+
   @doc """
   Get block by id.
 
@@ -30,7 +32,9 @@ defmodule ArkElixir.Block do
   """
   @spec blocks(Tesla.Client.t(), Keyword.t()) :: ArkElixir.response()
   def blocks(client, parameters \\ []) do
-    get(client, "api/blocks", query: parameters)
+    client
+    |> get("api/blocks", query: parameters)
+    |> handle_response
   end
 
   @doc """
@@ -157,5 +161,19 @@ defmodule ArkElixir.Block do
   @spec supply(Tesla.Client.t()) :: ArkElixir.response()
   def supply(client) do
     get(client, "api/blocks/getSupply")
+  end
+
+  # private
+
+  defp handle_response({:ok, %{"blocks" => blocks}}) do
+    {:ok, Enum.map(blocks, &Block.build/1)}
+  end
+
+  defp handle_response({:ok, invalid_response}) do
+    {:error, invalid_response}
+  end
+
+  defp handle_response({:error, _error} = response) do
+    response
   end
 end

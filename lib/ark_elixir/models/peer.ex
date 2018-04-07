@@ -2,6 +2,8 @@ defmodule ArkElixir.Models.Peer do
   @moduledoc """
   Peer model.
   """
+  @derive Jason.Encoder
+
   defstruct [
     :delay,
     :errors,
