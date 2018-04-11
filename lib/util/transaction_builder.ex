@@ -10,7 +10,7 @@ defmodule ArkElixir.Util.TransactionBuilder do
   @vote 3
   @multisignature 4
 
-  # @transfer_fee 10000000
+  @transfer_fee 10000000
   @second_signature_fee 500000000
   @delegate_fee 2500000000
   @vote_fee 100000000
@@ -123,7 +123,7 @@ defmodule ArkElixir.Util.TransactionBuilder do
 
     transaction = %{
       amount: amount,
-      fee: @transfer,
+      fee: @transfer_fee,
       id: nil,
       recipient_id: recipient_id,
       sender_public_key: EcKey.private_key_to_public_key(key),
@@ -318,10 +318,11 @@ defmodule ArkElixir.Util.TransactionBuilder do
   end
 
   defp get_sender_public_key(%{sender_public_key: sender_public_key}) do
-    sender_public_key |> String.upcase |> Base.decode16! |> elem(1)
+    sender_public_key |> String.upcase |> Base.decode16!
   end
 
-  defp get_second_signature(%{sign_signature: signature}, false) do
+  defp get_second_signature(%{sign_signature: signature}, false)
+  when is_bitstring(signature) do
     signature |> String.upcase |> Base.decode16!
   end
 
