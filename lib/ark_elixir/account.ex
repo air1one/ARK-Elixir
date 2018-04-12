@@ -19,7 +19,7 @@ defmodule ArkElixir.Account do
   @spec account(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def account(client, address) do
     client
-    |> get("api/accounts", [address: address])
+    |> get("api/accounts", query: [address: address])
     |> handle_response
   end
 
