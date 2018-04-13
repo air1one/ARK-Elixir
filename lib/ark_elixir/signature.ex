@@ -5,8 +5,6 @@ defmodule ArkElixir.Signature do
 
   import ArkElixir
 
-  alias ArkElixir.Util.TransactionBuilder
-
   @doc """
   Create a new signature.
 
