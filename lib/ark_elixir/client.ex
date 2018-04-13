@@ -17,8 +17,25 @@ defmodule ArkElixir.Client do
   ## Examples
 
       iex> ArkElixir.Client.new(client)
-      :world
-
+      %Tesla.Client{
+        fun: nil,
+        post: [],
+        pre: [
+          {Tesla.Middleware.BaseUrl, :call, ["http://172.999.999.173:4002"]},
+          {Tesla.Middleware.Headers, :call,
+           [
+             [
+               {"Content-Type", "application/json"},
+               {"nethash",
+                "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23"},
+               {"version", "1.1.1"},
+               {"port", 1}
+             ]
+           ]},
+          {Tesla.Middleware.JSON, :call, [[]]},
+          {Tesla.Middleware.Logger, :call, [[log_level: :debug]]}
+        ]
+      }
   """
   @spec new(Map.t) :: Tesla.Client.t
   def new(%{
