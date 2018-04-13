@@ -8,11 +8,7 @@ defmodule ArkElixir.MultiSignature do
   @doc """
   Get a list of accounts.
 
-  ## Examples
-
-      iex> ArkElixir.MultiSignature.accounts(client)
-      :world
-
+  This works in theory but seems to lag too badly to be of use.
   """
   @spec accounts(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def accounts(client, public_key) do
@@ -22,11 +18,7 @@ defmodule ArkElixir.MultiSignature do
   @doc """
   Create a new multi signature.
 
-  ## Examples
-
-      iex> ArkElixir.MultiSignature.create(client)
-      :world
-
+  DEPRECATED
   """
   @spec create(
     Tesla.Client.t(),
@@ -45,9 +37,8 @@ defmodule ArkElixir.MultiSignature do
 
   ## Examples
 
-      iex> ArkElixir.MultiSignature.pending(client)
-      :world
-
+      iex> ArkElixir.MultiSignature.pending(client, "02d21954fb256662f82560cdced947af040e5190d9a08e65ee29443090499b22ec")
+      {:ok, %{"success" => true, "transactions" => []}}
   """
   @spec pending(Tesla.Client.t(), String.t()) :: ArkElixir.response()
   def pending(client, public_key) do
@@ -57,11 +48,7 @@ defmodule ArkElixir.MultiSignature do
   @doc """
   Sign a new multi signature.
 
-  ## Examples
-
-      iex> ArkElixir.MultiSignature.sign(client)
-      :world
-
+  DEPRECATED
   """
   @spec sign(
     Tesla.Client.t(),
