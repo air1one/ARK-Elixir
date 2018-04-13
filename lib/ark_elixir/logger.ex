@@ -78,6 +78,10 @@ defmodule ArkElixir.Logger do
     debug(value)
   end
 
+  def log(:default, value) do
+    info(value)
+  end
+
   def log(:error, value) do
     error(value)
   end

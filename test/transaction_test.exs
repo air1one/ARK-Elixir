@@ -15,13 +15,13 @@ defmodule ArkElixir.TransactionTest do
     response =
       transaction(@client, "dfa5a992f392daf01e3db43e49799010ef13b107c592e9044ced99f7df3f81c9")
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Transaction.transactions" do
     response = transactions(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   @tag :skip
@@ -32,13 +32,13 @@ defmodule ArkElixir.TransactionTest do
         "dfa5a992f392daf01e3db43e49799010ef13b107c592e9044ced99f7df3f81c9"
       )
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Transaction.unconfirmed_transactions" do
     response = unconfirmed_transactions(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   @tag :skip
@@ -52,6 +52,6 @@ defmodule ArkElixir.TransactionTest do
         'secret'
       )
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

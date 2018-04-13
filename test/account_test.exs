@@ -16,36 +16,30 @@ defmodule ArkElixir.AccountTest do
   test "call ArkElixir.Account.balance" do
     response = balance(@client, @account)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Account.publickey" do
     response = publickey(@client, @account)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Account.fee" do
     response = fee(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Account.delegates" do
     response = delegates(@client, @account)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Account.account" do
     response = account(@client, @account)
 
-    assert(response["success"] === true)
-  end
-
-  test "call ArkElixir.Account.top" do
-    response = top(@client)
-
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

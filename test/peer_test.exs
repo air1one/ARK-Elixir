@@ -14,18 +14,18 @@ defmodule ArkElixir.PeerTest do
   test "call ArkElixir.Peer.peer" do
     response = peer(@client, "167.114.29.33", 8443)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Peer.peers" do
     response = peers(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Peer.version" do
     response = version(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

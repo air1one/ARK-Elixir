@@ -14,6 +14,6 @@ defmodule ArkElixir.SignatureTest do
   test "signature get signature fee" do
     response = fee(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

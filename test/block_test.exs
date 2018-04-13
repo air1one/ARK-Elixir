@@ -14,66 +14,66 @@ defmodule ArkElixir.BlockTest do
   test "call ArkElixir.Block.block" do
     response = block(@client, "16881146789693253434")
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.blocks" do
     response = blocks(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.epoch" do
     response = epoch(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.height" do
     response = height(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.nethash" do
     response = nethash(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.fee" do
     response = fee(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.fees" do
     response = fees(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.milestone" do
     response = milestone(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.reward" do
     response = reward(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.supply" do
     response = supply(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Block.status" do
     response = status(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

@@ -65,7 +65,7 @@ defmodule ArkElixir.Client do
       {Tesla.Middleware.BaseUrl, url},
       {Tesla.Middleware.Headers, headers},
       {Tesla.Middleware.JSON, []},
-      {Tesla.Middleware.Logger, [log_level: log_level]},
+      {ArkElixir.Middleware.Logger, [log_level: log_level]},
     ]
 
     Tesla.build_client(pre)

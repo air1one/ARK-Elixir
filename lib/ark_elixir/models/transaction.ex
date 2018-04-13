@@ -39,6 +39,10 @@ defmodule ArkElixir.Models.Transaction do
   @doc """
   Builds an ArkElixir.Models.Transaction struct from the API response map.
   """
+  def build(nil) do
+    %__MODULE__{}
+  end
+
   def build(attributes) do
     %__MODULE__{
       amount: Map.get(attributes, "amount"),
