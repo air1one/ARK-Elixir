@@ -1,8 +1,18 @@
 defmodule ArkElixir.Logger do
+  @moduledoc """
+  This is a wrapper for the standard Logger module. It contains convenience
+  methods for logging exceptions and objects in addition to strings.
+  """
   require Logger
 
   # Contextual
 
+  @doc """
+  Converts a rescued error and stacktrace into a pretty error output.
+
+  Returns the error object passed.
+  """
+  @spec rescued_error(Exception.t(), List.t()) :: Exception.t()
   def rescued_error(err, stacktrace) do
     :error |> Exception.format(err, stacktrace) |> error
     err
@@ -10,6 +20,12 @@ defmodule ArkElixir.Logger do
 
   # Generic
 
+  @doc """
+  Outputs the object or string in debug mode.
+
+  Returns the object passed.
+  """
+  @spec debug(any()) :: any()
   def debug(value) when is_bitstring(value) do
     Logger.debug(value)
     value
@@ -20,6 +36,12 @@ defmodule ArkElixir.Logger do
     value
   end
 
+  @doc """
+  Outputs the object or string in error mode.
+
+  Returns the object passed.
+  """
+  @spec error(any()) :: any()
   def error(value) when is_bitstring(value) do
     Logger.error(value)
     value
@@ -30,6 +52,12 @@ defmodule ArkElixir.Logger do
     value
   end
 
+  @doc """
+  Outputs the object or string in info mode.
+
+  Returns the object passed.
+  """
+  @spec info(any()) :: any()
   def info(value) when is_bitstring(value) do
     Logger.info(value)
     value
@@ -40,6 +68,12 @@ defmodule ArkElixir.Logger do
     value
   end
 
+  @doc """
+  Outputs the object or string in the mode passed mode.
+
+  Returns the object passed.
+  """
+  @spec log(Atom.t(), any()) :: any()
   def log(:debug, value) do
     debug(value)
   end
@@ -56,6 +90,11 @@ defmodule ArkElixir.Logger do
     warn(value)
   end
 
+  @doc """
+  Outputs the object or string in warn mode.
+
+  Returns the object passed.
+  """
   def warn(value) when is_bitstring(value) do
     Logger.warn(value)
     value
