@@ -14,18 +14,18 @@ defmodule ArkElixir.LoaderTest do
   test "call ArkElixir.Loader.status" do
     response = status(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Loader.sync" do
     response = sync(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Loader.autoconfigure" do
     response = autoconfigure(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

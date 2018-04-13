@@ -14,20 +14,20 @@ defmodule ArkElixir.DelegateTest do
   test "call ArkElixir.Delegate.count" do
     response = count(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.search" do
     response = search(@client, "bold", limit: 2)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.voters" do
     response =
       voters(@client, "022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d")
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.delegate" do
@@ -37,19 +37,19 @@ defmodule ArkElixir.DelegateTest do
         publicKey: "022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d"
       )
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.delegates" do
     response = delegates(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.fee" do
     response = fee(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.forged_by_account" do
@@ -59,13 +59,13 @@ defmodule ArkElixir.DelegateTest do
         "022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d"
       )
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.next_forgers" do
     response = next_forgers(@client)
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 
   test "call ArkElixir.Delegate.forging_status" do
@@ -75,6 +75,6 @@ defmodule ArkElixir.DelegateTest do
         "022cca9529ec97a772156c152a00aad155ee6708243e65c9d211a589cb5d43234d"
       )
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

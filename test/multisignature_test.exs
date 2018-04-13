@@ -15,6 +15,6 @@ defmodule ArkElixir.MultiSignatureTest do
     response =
       pending(@client, "02c7455bebeadde04728441e0f57f82f972155c088252bf7c1365eb0dc84fbf5de")
 
-    assert(response["success"] === true)
+    assert({:ok, _} = response)
   end
 end

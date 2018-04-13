@@ -6,17 +6,40 @@ defmodule ArkElixir.Loader do
   import ArkElixir
 
   @doc """
+  Auto-configure the client loader.
+
+  ## Examples
+
+      iex> ArkElixir.Loader.autoconfigure(client)
+      {:ok,
+       %{
+         "network" => %{
+           "explorer" => "http://dexplorer.ark.io",
+           "nethash" => "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23",
+           "symbol" => "DѦ",
+           "token" => "DARK",
+           "version" => 30
+         },
+         "success" => true
+       }}
+  """
+  @spec autoconfigure(Tesla.Client.t()) :: ArkElixir.response()
+  def autoconfigure(client) do
+    get(client, "api/loader/autoconfigure")
+  end
+
+  @doc """
   Get the blockchain status.
 
   ## Examples
 
       iex> ArkElixir.Loader.status(client)
-      %{"blocksCount" => 0, "loaded" => false, "now" => 2346599, "success" => true}
-
+      {:ok,
+       %{"blocksCount" => 0, "loaded" => false, "now" => 3089786, "success" => true}}
   """
-  @spec status(ArkElixir.Client) :: ArkElixir.response()
+  @spec status(Telsa.Client.t()) :: ArkElixir.response()
   def status(client) do
-    get(client, 'api/loader/status')
+    get(client, "api/loader/status")
   end
 
   @doc """
@@ -25,25 +48,17 @@ defmodule ArkElixir.Loader do
   ## Examples
 
       iex> ArkElixir.Loader.sync(client)
-      %{"blocks" => -13, "height" => 2492181, "id" => "7188317292059640668", "success" => true, "syncing" => false}
-
+      {:ok,
+       %{
+         "blocks" => -35,
+         "height" => 3102327,
+         "id" => "10803247886369746727",
+         "success" => true,
+         "syncing" => false
+       }}
   """
-  @spec sync(ArkElixir.Client) :: ArkElixir.response()
+  @spec sync(Tesla.Client.t()) :: ArkElixir.response()
   def sync(client) do
-    get(client, 'api/loader/status/sync')
-  end
-
-  @doc """
-  Auto-configure the client loader.
-
-  ## Examples
-
-      iex> ArkElixir.Loader.autoconfigure(client)
-      %{"network" => %{"explorer" => "http://dexplorer.ark.io", "nethash" => "578e820911f24e039733b45e4882b73e301f813a0d2c31330dafda84534ffa23", "symbol" => "DѦ", "token" => "DARK", "version" => 30}, "success" => true}
-
-  """
-  @spec autoconfigure(ArkElixir.Client) :: ArkElixir.response()
-  def autoconfigure(client) do
-    get(client, 'api/loader/autoconfigure')
+    get(client, "api/loader/status/sync")
   end
 end
