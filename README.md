@@ -1,7 +1,7 @@
 # ARK Elixir
 
 <p align="center">
-    <img src="https://github.com/faustbrian/ARK-Elixir/blob/master/banner.png" />
+    <img src="https://github.com/ArkEcosystem/ARK-Elixir/blob/develop/banner.png" />
 </p>
 
 > An [ARK](https://github.com/ArkEcosystem/ark-node) bridge for Elixir.
@@ -13,7 +13,7 @@ The package can be installed by adding `ark_elixir` to your list of dependencies
 ```elixir
 def deps do
   [
-    {:ark_elixir, github: "faustbrian/ARK-Elixir"}
+    {:ark_elixir, github: "ArkEcosystem/ARK-Elixir"}
   ]
 end
 ```
@@ -50,10 +50,6 @@ client = ArkElixir.Client.new(%{
 
 IO.puts response["transactionIds"]
 ```
-
-# To-Do
-
-- Add Responses to Docs
 
 ## Testing
 
