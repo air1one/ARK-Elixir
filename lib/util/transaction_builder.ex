@@ -2,7 +2,7 @@ defmodule ArkElixir.Util.TransactionBuilder do
   alias ArkElixir.Util.{Base58Check, EcKey}
 
   # 13:00:00 March 21, 2017
-  @ark_epoch 1490101200
+  @ark_epoch Application.get_env(:ark_elixir, :transactions)[:epoch]
 
   @transfer 0
   @second_signature 1
@@ -10,11 +10,11 @@ defmodule ArkElixir.Util.TransactionBuilder do
   @vote 3
   @multisignature 4
 
-  @transfer_fee 10000000
-  @second_signature_fee 500000000
-  @delegate_fee 2500000000
-  @vote_fee 100000000
-  @multisignature_base_fee 500000000
+  @transfer_fee Application.get_env(:ark_elixir, :transactions)[:transfer_fee]
+  @second_signature_fee Application.get_env(:ark_elixir, :transactions)[:second_signature_fee]
+  @delegate_fee Application.get_env(:ark_elixir, :transactions)[:delegate_fee]
+  @vote_fee Application.get_env(:ark_elixir, :transactions)[:vote_fee]
+  @multisignature_base_fee Application.get_env(:ark_elixir, :transactions)[:multisignature_base_fee]
 
   @doc """
   Unix timestamp representing the seconds between the Unix Epoch and the Ark
